@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/package-solution/2019-07/package-solution.schema.json",
+  "solution": {
+    "name": "COSF Intranet Portal",
+    "id": "b2c4d6e8-1a3f-4c7d-9e2b-0f5a8d3c1e7f",
+    "version": "2.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "City of South Fulton IT Department",
+      "privacyUrl": "https://www.cityofsouthfultonga.gov",
+      "termsOfUseUrl": "https://www.cityofsouthfultonga.gov",
+      "websiteUrl": "https://www.cityofsouthfultonga.gov",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "City of South Fulton Employee Intranet Portal - full branded experience"
+      },
+      "longDescription": {
+        "default": "Delivers the complete COSF intranet design: branded header, department navigation, announcements, events, departments directory, and all section pages."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "COSF Intranet Portal Feature",
+        "description": "Deploys the COSF Intranet Portal web part",
+        "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "version": "2.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/cosf-intranet.sppkg"
+  }
+}
