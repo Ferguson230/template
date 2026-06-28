@@ -1,0 +1,29 @@
+name: Build COSF Intranet .sppkg
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: SharePoint-Template/spfx
+        run: npm install --legacy-peer-deps
+
+      - name: Build
+        working-directory: SharePoint-Template/spfx
+        run: npx gulp bundle --ship && npx gulp package-solution --ship
+
+      - name: Upload .sppkg
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosf-intranet-sppkg
+          path: SharePoint-Template/spfx/sharepoint/solution/cosf-intranet.sppkg
+          retention-days: 30
