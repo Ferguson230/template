@@ -7,9 +7,7 @@
   },
   "scripts": {
     "build": "gulp bundle",
-    "ship": "gulp bundle --ship && gulp package-solution --ship",
-    "serve": "gulp serve",
-    "clean": "gulp clean"
+    "ship": "gulp bundle --ship && gulp package-solution --ship"
   },
   "dependencies": {
     "@microsoft/sp-core-library": "1.18.2",
@@ -21,6 +19,7 @@
     "react-dom": "17.0.1"
   },
   "devDependencies": {
+    "@microsoft/rush-stack-compiler-4.7": "0.1.0",
     "@microsoft/eslint-config-spfx": "1.18.2",
     "@microsoft/sp-build-web": "1.18.2",
     "@microsoft/sp-module-interfaces": "1.18.2",
