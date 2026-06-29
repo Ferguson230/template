@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/module-interfaces/2018-08/schema.json",
+  "id": "e5f6a7b8-c9d0-1234-ef01-345678901234",
+  "alias": "CosfAnnouncementsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportsFullBleed": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "City of South Fulton" },
+    "title": { "default": "COSF Announcements" },
+    "description": { "default": "Displays latest city announcements from the 'City Announcements' SharePoint list. Falls back to demo content if the list doesn't exist yet." },
+    "officeFabricIconFontName": "Megaphone",
+    "properties": {
+      "listName": "City Announcements",
+      "maxItems": 5,
+      "title": "Latest News & Announcements"
+    }
+  }]
+}

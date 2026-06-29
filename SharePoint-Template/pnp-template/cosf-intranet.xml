@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  City of South Fulton — PnP Provisioning Template
+  Version:   2.0
+  Updated:   2026
+  Apply with: Invoke-PnPSiteTemplate -Path cosf-intranet.xml
+  SAFE: This template does NOT delete existing lists, libraries, or content.
+        It applies branding, navigation, and page structure only.
+-->
+<pnp:Provisioning
+  xmlns:pnp="http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema https://raw.githubusercontent.com/pnp/PnP-Provisioning-Schema/master/ProvisioningSchema-2022-09.xsd">
+
+  <pnp:Preferences Generator="City of South Fulton IT Department" />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       TEMPLATES
+  ══════════════════════════════════════════════════════════════════════ -->
+  <pnp:Templates ID="COSF-Templates">
+    <pnp:ProvisioningTemplate ID="COSF-Intranet-Template" Version="2" Scope="Web">
+
+      <!-- ── WEB PROPERTIES ────────────────────────────────────────── -->
+      <pnp:PropertyBagEntries>
+        <pnp:PropertyBagEntry Key="COSFIntranetVersion"   Value="2.0"                   Overwrite="true" />
+        <pnp:PropertyBagEntry Key="COSFBrandApplied"      Value="true"                  Overwrite="true" />
+        <pnp:PropertyBagEntry Key="COSFPrimaryColor"      Value="#0A72B8"               Overwrite="true" />
+        <pnp:PropertyBagEntry Key="COSFAccentColor"       Value="#74B745"               Overwrite="true" />
+        <pnp:PropertyBagEntry Key="COSFNavBarColor"       Value="#274B71"               Overwrite="true" />
+      </pnp:PropertyBagEntries>
+
+      <!-- ── REGIONAL SETTINGS ─────────────────────────────────────── -->
+      <pnp:RegionalSettings
+        LocaleId="1033"
+        TimeZone="11"
+        WorkDayStartHour="480"
+        WorkDayEndHour="1020"
+        CalendarType="1"
+        FirstDayOfWeek="0" />
+
+      <!-- ── SITE FEATURES ──────────────────────────────────────────── -->
+      <pnp:Features>
+        <pnp:WebFeatures>
+          <!-- Modern pages -->
+          <pnp:Feature ID="B6917CB1-93A0-4B97-A84D-7CF49975D4EC" Deactivate="false" />
+          <!-- SharePoint home news -->
+          <pnp:Feature ID="E2F64A7C-BFAC-4FF7-8D1E-F03B7B94F1E0" Deactivate="false" />
+        </pnp:WebFeatures>
+      </pnp:Features>
+
+      <!-- ── NAVIGATION ─────────────────────────────────────────────── -->
+      <!--
+        IMPORTANT: This replaces the top navigation links.
+        Existing pages and libraries are untouched — only the nav bar changes.
+        Current nav nodes are cleared and rebuilt from this structure.
+      -->
+      <pnp:Navigation AddNewPagesToNavigation="false" CreateFriendlyUrlsForNewPages="false">
+
+        <pnp:CurrentNavigation NavigationType="Structural">
+          <pnp:NavigationNodes>
+
+            <pnp:NavigationNode Title="Home" Url="/" IsExternal="false" />
+
+            <!-- City Manager's Office -->
+            <pnp:NavigationNode Title="City Manager's Office" Url="/SitePages/city-managers-office.aspx" IsExternal="false">
+              <pnp:NavigationNodes>
+                <pnp:NavigationNode Title="Overview"             Url="/SitePages/city-managers-office.aspx"              IsExternal="false" />
+                <pnp:NavigationNode Title="Strategic Priorities" Url="/SitePages/city-managers-office-priorities.aspx"   IsExternal="false" />
+                <pnp:NavigationNode Title="Memos &amp; Directives" Url="/SitePages/city-managers-office-memos.aspx"     IsExternal="false" />
+                <pnp:NavigationNode Title="Budget"               Url="/SitePages/city-managers-office-budget.aspx"       IsExternal="false" />
+              </pnp:NavigationNodes>
+            </pnp:NavigationNode>
+
+            <!-- Human Resources -->
+            <pnp:NavigationNode Title="Human Resources" Url="/SitePages/human-resources.aspx" IsExternal="false">
+              <pnp:NavigationNodes>
+                <pnp:NavigationNode Title="Overview"             Url="/SitePages/human-resources.aspx"                  IsExternal="false" />
+                <pnp:NavigationNode Title="Benefits"             Url="/SitePages/hr-benefits.aspx"                      IsExternal="false" />
+                <pnp:NavigationNode Title="Policies &amp; Handbook" Url="/SitePages/hr-policies.aspx"                  IsExternal="false" />
+                <pnp:NavigationNode Title="Training &amp; Dev"   Url="/SitePages/hr-training.aspx"                      IsExternal="false" />
+                <pnp:NavigationNode Title="Onboarding"           Url="/SitePages/hr-onboarding.aspx"                    IsExternal="false" />
+              </pnp:NavigationNodes>
+            </pnp:NavigationNode>
+
+            <!-- Information Technology -->
+            <pnp:NavigationNode Title="Information Technology" Url="/SitePages/information-technology.aspx" IsExternal="false">
+              <pnp:NavigationNodes>
+                <pnp:NavigationNode Title="Overview"             Url="/SitePages/information-technology.aspx"            IsExternal="false" />
+                <pnp:NavigationNode Title="System Status"        Url="/SitePages/it-status.aspx"                        IsExternal="false" />
+                <pnp:NavigationNode Title="Help Desk"            Url="/SitePages/it-helpdesk.aspx"                      IsExternal="false" />
+                <pnp:NavigationNode Title="Resources &amp; Guides" Url="/SitePages/it-resources.aspx"                   IsExternal="false" />
+                <pnp:NavigationNode Title="Security"             Url="/SitePages/it-security.aspx"                      IsExternal="false" />
+              </pnp:NavigationNodes>
+            </pnp:NavigationNode>
+
+            <!-- Communications -->
+            <pnp:NavigationNode Title="Communications" Url="/SitePages/communications.aspx" IsExternal="false">
+              <pnp:NavigationNodes>
+                <pnp:NavigationNode Title="Overview"             Url="/SitePages/communications.aspx"                   IsExternal="false" />
+                <pnp:NavigationNode Title="Press &amp; Media"    Url="/SitePages/comm-press.aspx"                       IsExternal="false" />
+                <pnp:NavigationNode Title="Social Media"         Url="/SitePages/comm-social.aspx"                      IsExternal="false" />
+                <pnp:NavigationNode Title="Brand Assets"         Url="/SitePages/comm-brand.aspx"                       IsExternal="false" />
+                <pnp:NavigationNode Title="Internal Comms"       Url="/SitePages/comm-internal.aspx"                    IsExternal="false" />
+                <pnp:NavigationNode Title="Submit a Request"     Url="/SitePages/comm-requests.aspx"                    IsExternal="false" />
+              </pnp:NavigationNodes>
+            </pnp:NavigationNode>
+
+            <!-- General Services (new) -->
+            <pnp:NavigationNode Title="General Services" Url="/SitePages/general-services.aspx" IsExternal="false">
+              <pnp:NavigationNodes>
+                <pnp:NavigationNode Title="Overview"             Url="/SitePages/general-services.aspx"                 IsExternal="false" />
+                <pnp:NavigationNode Title="Facilities"           Url="/SitePages/gs-facilities.aspx"                    IsExternal="false" />
+                <pnp:NavigationNode Title="Fleet Management"     Url="/SitePages/gs-fleet.aspx"                         IsExternal="false" />
+                <pnp:NavigationNode Title="Purchasing &amp; Vendors" Url="/SitePages/gs-purchasing.aspx"                IsExternal="false" />
+                <pnp:NavigationNode Title="Records Management"   Url="/SitePages/gs-records.aspx"                       IsExternal="false" />
+              </pnp:NavigationNodes>
+            </pnp:NavigationNode>
+
+            <!-- Departments (new — card directory) -->
+            <pnp:NavigationNode Title="Departments" Url="/SitePages/departments.aspx" IsExternal="false" />
+
+          </pnp:NavigationNodes>
+        </pnp:CurrentNavigation>
+
+        <!-- Global (top-bar) nav mirrors the same structure -->
+        <pnp:GlobalNavigation NavigationType="Structural">
+          <pnp:NavigationNodes>
+            <pnp:NavigationNode Title="Home"                  Url="/"                                          IsExternal="false" />
+            <pnp:NavigationNode Title="City Manager's Office" Url="/SitePages/city-managers-office.aspx"        IsExternal="false" />
+            <pnp:NavigationNode Title="Human Resources"       Url="/SitePages/human-resources.aspx"             IsExternal="false" />
+            <pnp:NavigationNode Title="Information Technology" Url="/SitePages/information-technology.aspx"     IsExternal="false" />
+            <pnp:NavigationNode Title="Communications"        Url="/SitePages/communications.aspx"              IsExternal="false" />
+            <pnp:NavigationNode Title="General Services"      Url="/SitePages/general-services.aspx"            IsExternal="false" />
+            <pnp:NavigationNode Title="Departments"           Url="/SitePages/departments.aspx"                 IsExternal="false" />
+          </pnp:NavigationNodes>
+        </pnp:GlobalNavigation>
+
+      </pnp:Navigation>
+
+      <!-- ── LISTS / LIBRARIES ──────────────────────────────────────── -->
+      <!--
+        Lists are created only if they do NOT already exist.
+        The UpdateBehavior="Skip" prevents overwriting existing data.
+      -->
+      <pnp:Lists>
+
+        <!-- Announcements -->
+        <pnp:ListInstance
+          Title="City Announcements"
+          Description="Citywide announcements for the intranet home page."
+          TemplateType="104"
+          Url="Lists/CityAnnouncements"
+          EnableVersioning="true"
+          MaxVersionLimit="10"
+          OnQuickLaunch="false">
+          <pnp:Fields>
+            <pnp:Field Type="Choice" DisplayName="Category" Name="AnnouncementCategory"
+              Required="FALSE" Group="COSF Columns">
+              <CHOICES>
+                <CHOICE>Important</CHOICE>
+                <CHOICE>HR Update</CHOICE>
+                <CHOICE>IT Notice</CHOICE>
+                <CHOICE>Event</CHOICE>
+                <CHOICE>General</CHOICE>
+                <CHOICE>Emergency</CHOICE>
+              </CHOICES>
+            </pnp:Field>
+            <pnp:Field Type="Choice" DisplayName="Priority" Name="AnnouncementPriority"
+              Required="FALSE" Group="COSF Columns">
+              <CHOICES>
+                <CHOICE>High</CHOICE>
+                <CHOICE>Normal</CHOICE>
+                <CHOICE>Low</CHOICE>
+              </CHOICES>
+            </pnp:Field>
+          </pnp:Fields>
+          <pnp:Views>
+            <View Name="Active Announcements" DefaultView="TRUE">
+              <Query>
+                <Where>
+                  <Or>
+                    <IsNull><FieldRef Name="Expires"/></IsNull>
+                    <Geq><FieldRef Name="Expires"/><Value Type="DateTime"><Today/></Value></Geq>
+                  </Or>
+                </Where>
+                <OrderBy>
+                  <FieldRef Name="AnnouncementPriority" Ascending="TRUE"/>
+                  <FieldRef Name="Modified" Ascending="FALSE"/>
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle"/>
+                <FieldRef Name="Body"/>
+                <FieldRef Name="AnnouncementCategory"/>
+                <FieldRef Name="AnnouncementPriority"/>
+                <FieldRef Name="Expires"/>
+                <FieldRef Name="Modified"/>
+              </ViewFields>
+            </View>
+          </pnp:Views>
+        </pnp:ListInstance>
+
+        <!-- Department Directory -->
+        <pnp:ListInstance
+          Title="Department Directory"
+          Description="All city departments — displayed as cards on the Departments page."
+          TemplateType="100"
+          Url="Lists/DepartmentDirectory"
+          EnableVersioning="true"
+          OnQuickLaunch="false">
+          <pnp:Fields>
+            <pnp:Field Type="Text"  DisplayName="Department Name"  Name="DeptName"      Required="TRUE"  Group="COSF Columns" />
+            <pnp:Field Type="Text"  DisplayName="Short Code"       Name="DeptShortCode" Required="FALSE" Group="COSF Columns" />
+            <pnp:Field Type="Text"  DisplayName="Director / Leader"Name="DeptDirector"  Required="FALSE" Group="COSF Columns" />
+            <pnp:Field Type="Text"  DisplayName="Phone"            Name="DeptPhone"     Required="FALSE" Group="COSF Columns" />
+            <pnp:Field Type="Text"  DisplayName="Email"            Name="DeptEmail"     Required="FALSE" Group="COSF Columns" />
+            <pnp:Field Type="Note"  DisplayName="Description"      Name="DeptDesc"      Required="FALSE" Group="COSF Columns" RichText="FALSE" />
+            <pnp:Field Type="Text"  DisplayName="Page URL"         Name="DeptPageUrl"   Required="FALSE" Group="COSF Columns" />
+            <pnp:Field Type="Choice" DisplayName="Category" Name="DeptCategory" Required="FALSE" Group="COSF Columns">
+              <CHOICES>
+                <CHOICE>Public Safety</CHOICE>
+                <CHOICE>Administration</CHOICE>
+                <CHOICE>Infrastructure</CHOICE>
+                <CHOICE>Development</CHOICE>
+                <CHOICE>Technology</CHOICE>
+                <CHOICE>Legal</CHOICE>
+                <CHOICE>Justice</CHOICE>
+                <CHOICE>Operations</CHOICE>
+                <CHOICE>Enforcement</CHOICE>
+                <CHOICE>Quality of Life</CHOICE>
+              </CHOICES>
+            </pnp:Field>
+            <pnp:Field Type="Number" DisplayName="Sort Order" Name="DeptSortOrder" Required="FALSE" Group="COSF Columns" />
+          </pnp:Fields>
+          <pnp:DataRows UpdateBehavior="Skip">
+            <!-- Pre-seed all 18 departments — Skip means existing rows are NOT overwritten -->
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Police Department</pnp:Field>
+              <pnp:Field Name="DeptShortCode">PD</pnp:Field>
+              <pnp:Field Name="DeptDirector">Chief of Police</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7750</pnp:Field>
+              <pnp:Field Name="DeptCategory">Public Safety</pnp:Field>
+              <pnp:Field Name="DeptDesc">Public safety, law enforcement, crime prevention, and community policing across South Fulton.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">1</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Fire &amp; Rescue</pnp:Field>
+              <pnp:Field Name="DeptShortCode">FIRE</pnp:Field>
+              <pnp:Field Name="DeptDirector">Fire Chief</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7760</pnp:Field>
+              <pnp:Field Name="DeptCategory">Public Safety</pnp:Field>
+              <pnp:Field Name="DeptDesc">Fire suppression, emergency medical services, hazmat response, and fire prevention programs.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">2</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Finance</pnp:Field>
+              <pnp:Field Name="DeptShortCode">FIN</pnp:Field>
+              <pnp:Field Name="DeptDirector">Finance Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7710</pnp:Field>
+              <pnp:Field Name="DeptCategory">Administration</pnp:Field>
+              <pnp:Field Name="DeptDesc">Budget management, accounting, payroll, treasury, and financial reporting for the city.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">3</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Procurement</pnp:Field>
+              <pnp:Field Name="DeptShortCode">PROC</pnp:Field>
+              <pnp:Field Name="DeptDirector">Procurement Manager</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7715</pnp:Field>
+              <pnp:Field Name="DeptCategory">Administration</pnp:Field>
+              <pnp:Field Name="DeptDesc">Purchasing, vendor management, contract administration, and competitive bidding oversight.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">4</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Public Works</pnp:Field>
+              <pnp:Field Name="DeptShortCode">PW</pnp:Field>
+              <pnp:Field Name="DeptDirector">Public Works Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7720</pnp:Field>
+              <pnp:Field Name="DeptCategory">Infrastructure</pnp:Field>
+              <pnp:Field Name="DeptDesc">Road maintenance, stormwater, sanitation, and infrastructure repair and improvement projects.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">5</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Community Development</pnp:Field>
+              <pnp:Field Name="DeptShortCode">CD</pnp:Field>
+              <pnp:Field Name="DeptDirector">Community Dev Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7725</pnp:Field>
+              <pnp:Field Name="DeptCategory">Development</pnp:Field>
+              <pnp:Field Name="DeptDesc">Planning, zoning, building permits, inspections, and economic development initiatives.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">6</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Parks &amp; Recreation</pnp:Field>
+              <pnp:Field Name="DeptShortCode">PARKS</pnp:Field>
+              <pnp:Field Name="DeptDirector">Parks Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7730</pnp:Field>
+              <pnp:Field Name="DeptCategory">Quality of Life</pnp:Field>
+              <pnp:Field Name="DeptDesc">City parks, recreation programs, special events, and the 20-year Parks Master Plan.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">7</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Municipal Court</pnp:Field>
+              <pnp:Field Name="DeptShortCode">COURT</pnp:Field>
+              <pnp:Field Name="DeptDirector">Chief Municipal Judge</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7272</pnp:Field>
+              <pnp:Field Name="DeptCategory">Justice</pnp:Field>
+              <pnp:Field Name="DeptDesc">Adjudication of ordinance violations, traffic citations, and code enforcement cases.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">8</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">City Clerk's Office</pnp:Field>
+              <pnp:Field Name="DeptShortCode">CLERK</pnp:Field>
+              <pnp:Field Name="DeptDirector">City Clerk</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7272</pnp:Field>
+              <pnp:Field Name="DeptCategory">Administration</pnp:Field>
+              <pnp:Field Name="DeptDesc">Official city records, council agendas, minutes, elections, and open records requests.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">9</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">City Attorney</pnp:Field>
+              <pnp:Field Name="DeptShortCode">LAW</pnp:Field>
+              <pnp:Field Name="DeptDirector">City Attorney</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7705</pnp:Field>
+              <pnp:Field Name="DeptCategory">Legal</pnp:Field>
+              <pnp:Field Name="DeptDesc">Legal counsel, contract review, litigation support, and legislative compliance for the city.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">10</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Human Resources</pnp:Field>
+              <pnp:Field Name="DeptShortCode">HR</pnp:Field>
+              <pnp:Field Name="DeptDirector">HR Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7740</pnp:Field>
+              <pnp:Field Name="DeptCategory">Administration</pnp:Field>
+              <pnp:Field Name="DeptDesc">Recruitment, employee relations, benefits administration, training, and workforce development.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/human-resources.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">11</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Information Technology</pnp:Field>
+              <pnp:Field Name="DeptShortCode">IT</pnp:Field>
+              <pnp:Field Name="DeptDirector">IT Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7745</pnp:Field>
+              <pnp:Field Name="DeptCategory">Technology</pnp:Field>
+              <pnp:Field Name="DeptDesc">City technology infrastructure, cybersecurity, help desk support, and digital transformation.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/information-technology.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">12</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Communications</pnp:Field>
+              <pnp:Field Name="DeptShortCode">COMM</pnp:Field>
+              <pnp:Field Name="DeptDirector">Communications Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-552-4311</pnp:Field>
+              <pnp:Field Name="DeptCategory">Administration</pnp:Field>
+              <pnp:Field Name="DeptDesc">Public affairs, media relations, social media, branding, and internal communications.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/communications.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">13</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">General Services</pnp:Field>
+              <pnp:Field Name="DeptShortCode">GS</pnp:Field>
+              <pnp:Field Name="DeptDirector">General Services Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7755</pnp:Field>
+              <pnp:Field Name="DeptCategory">Operations</pnp:Field>
+              <pnp:Field Name="DeptDesc">Facilities management, city fleet, custodial services, records management, and purchasing.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/general-services.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">14</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Code Enforcement</pnp:Field>
+              <pnp:Field Name="DeptShortCode">CODE</pnp:Field>
+              <pnp:Field Name="DeptDirector">Code Enforcement Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7770</pnp:Field>
+              <pnp:Field Name="DeptCategory">Enforcement</pnp:Field>
+              <pnp:Field Name="DeptDesc">Property maintenance standards, zoning compliance, abandoned vehicles, and nuisance abatement.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">15</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Budget &amp; Strategy</pnp:Field>
+              <pnp:Field Name="DeptShortCode">BUDG</pnp:Field>
+              <pnp:Field Name="DeptDirector">Budget Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7712</pnp:Field>
+              <pnp:Field Name="DeptCategory">Administration</pnp:Field>
+              <pnp:Field Name="DeptDesc">Annual budget preparation, performance management, strategic planning, and fiscal analysis.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">16</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Economic Development</pnp:Field>
+              <pnp:Field Name="DeptShortCode">ECON</pnp:Field>
+              <pnp:Field Name="DeptDirector">Economic Dev Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7780</pnp:Field>
+              <pnp:Field Name="DeptCategory">Development</pnp:Field>
+              <pnp:Field Name="DeptDesc">Business attraction, retention, small business support, and the South Fulton grant programs.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">17</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="DeptName">Emergency Management</pnp:Field>
+              <pnp:Field Name="DeptShortCode">EM</pnp:Field>
+              <pnp:Field Name="DeptDirector">Emergency Mgmt Director</pnp:Field>
+              <pnp:Field Name="DeptPhone">470-809-7790</pnp:Field>
+              <pnp:Field Name="DeptCategory">Public Safety</pnp:Field>
+              <pnp:Field Name="DeptDesc">Disaster preparedness, EOC coordination, hazard mitigation planning, and community resilience.</pnp:Field>
+              <pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field>
+              <pnp:Field Name="DeptSortOrder">18</pnp:Field>
+            </pnp:DataRow>
+          </pnp:DataRows>
+        </pnp:ListInstance>
+
+        <!-- Quick Links -->
+        <pnp:ListInstance
+          Title="Intranet Quick Links"
+          Description="Quick links shown on the home page."
+          TemplateType="100"
+          Url="Lists/IntranetQuickLinks"
+          EnableVersioning="true"
+          OnQuickLaunch="false">
+          <pnp:Fields>
+            <pnp:Field Type="Text"   DisplayName="URL"      Name="QuickLinkUrl"   Required="TRUE"  Group="COSF Columns" />
+            <pnp:Field Type="Text"   DisplayName="Icon"     Name="QuickLinkIcon"  Required="FALSE" Group="COSF Columns" />
+            <pnp:Field Type="Number" DisplayName="Sort Order" Name="QuickLinkSort" Required="FALSE" Group="COSF Columns" />
+          </pnp:Fields>
+          <pnp:DataRows UpdateBehavior="Skip">
+            <pnp:DataRow><pnp:Field Name="Title">Submit a Form</pnp:Field><pnp:Field Name="QuickLinkUrl">/SitePages/forms.aspx</pnp:Field><pnp:Field Name="QuickLinkIcon">FileText</pnp:Field><pnp:Field Name="QuickLinkSort">1</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Time &amp; Attendance</pnp:Field><pnp:Field Name="QuickLinkUrl">https://workforcenow.adp.com</pnp:Field><pnp:Field Name="QuickLinkIcon">Calendar</pnp:Field><pnp:Field Name="QuickLinkSort">2</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Benefits Portal</pnp:Field><pnp:Field Name="QuickLinkUrl">/SitePages/hr-benefits.aspx</pnp:Field><pnp:Field Name="QuickLinkIcon">Heart</pnp:Field><pnp:Field Name="QuickLinkSort">3</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">IT Help Desk</pnp:Field><pnp:Field Name="QuickLinkUrl">/SitePages/it-helpdesk.aspx</pnp:Field><pnp:Field Name="QuickLinkIcon">Laptop</pnp:Field><pnp:Field Name="QuickLinkSort">4</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Policy Library</pnp:Field><pnp:Field Name="QuickLinkUrl">/SitePages/hr-policies.aspx</pnp:Field><pnp:Field Name="QuickLinkIcon">BookOpen</pnp:Field><pnp:Field Name="QuickLinkSort">5</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Staff Directory</pnp:Field><pnp:Field Name="QuickLinkUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="QuickLinkIcon">Users</pnp:Field><pnp:Field Name="QuickLinkSort">6</pnp:Field></pnp:DataRow>
+          </pnp:DataRows>
+        </pnp:ListInstance>
+
+      </pnp:Lists>
+
+      <!-- ── APPLICATION CUSTOMIZER REGISTRATION ───────────────────────
+           This activates the COSF branded header + footer on every page.
+           The ClientSideComponentId must match CosfHeaderApplicationCustomizer.manifest.json id.
+           If the extension is already registered, SharePoint skips the duplicate.
+      ──────────────────────────────────────────────────────────────────── -->
+      <pnp:CustomActions>
+        <pnp:WebCustomActions>
+          <pnp:CustomAction
+            Name="COSFIntranetHeader"
+            Title="COSF Intranet Branded Header and Footer"
+            Location="ClientSideExtension.ApplicationCustomizer"
+            ClientSideComponentId="a1b2c3d4-e5f6-7890-abcd-ef1234567891"
+            ClientSideComponentProperties="{&quot;siteTitle&quot;:&quot;City of South Fulton&quot;,&quot;tagLine&quot;:&quot;Employee Intranet Portal · A City on the Rise!&quot;,&quot;logoUrl&quot;:&quot;&quot;}"
+            Sequence="100"
+            Enabled="true" />
+        </pnp:WebCustomActions>
+      </pnp:CustomActions>
+
+      <!-- ── SITE PAGES ─────────────────────────────────────────────────
+           Creates all section pages. UpdateBehavior="Skip" means if a
+           page already exists with that name it is left untouched.
+           Each page gets the COSF Hero Banner web part pre-placed.
+           Add your own content web parts below each zone in SharePoint.
+      ──────────────────────────────────────────────────────────────────── -->
+      <pnp:ClientSidePages>
+
+        <!-- ══ HOME PAGE ══════════════════════════════════════════════ -->
+        <pnp:ClientSidePage
+          PageName="home.aspx"
+          Title="COSF Intranet Home"
+          PromoteAsNewsArticle="false"
+          Overwrite="false"
+          Layout="Home"
+          EnableComments="false">
+          <pnp:Header Type="None" />
+          <pnp:Sections>
+            <!-- Full-width hero -->
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1"
+                  ControlId="home-hero-01"
+                  JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;home-hero-01&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Welcome to the City of South Fulton Intranet&quot;,&quot;tagline&quot;:&quot;Your hub for city resources, news, and department information.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;Explore Departments&quot;,&quot;ctaUrl&quot;:&quot;/SitePages/departments.aspx&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:true}}" />
+              </pnp:Controls>
+            </pnp:Section>
+            <!-- Two-column: announcements + quick links -->
+            <pnp:Section Order="2" Type="TwoColumn">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1"
+                  ControlId="home-announcements-01"
+                  JsonControlData="{&quot;id&quot;:&quot;e5f6a7b8-c9d0-1234-ef01-345678901234&quot;,&quot;instanceId&quot;:&quot;home-announcements-01&quot;,&quot;title&quot;:&quot;COSF Announcements&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;listName&quot;:&quot;City Announcements&quot;,&quot;maxItems&quot;:5,&quot;title&quot;:&quot;Latest News &amp; Announcements&quot;}}" />
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="2"
+                  ControlId="home-quicklinks-01"
+                  JsonControlData="{&quot;id&quot;:&quot;f6a7b8c9-d0e1-2345-f012-456789012345&quot;,&quot;instanceId&quot;:&quot;home-quicklinks-01&quot;,&quot;title&quot;:&quot;COSF Quick Links&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;listName&quot;:&quot;Intranet Quick Links&quot;,&quot;title&quot;:&quot;Quick Links&quot;}}" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <!-- ══ DEPARTMENTS PAGE ════════════════════════════════════════ -->
+        <pnp:ClientSidePage
+          PageName="departments.aspx"
+          Title="City Departments"
+          PromoteAsNewsArticle="false"
+          Overwrite="false"
+          Layout="Article"
+          EnableComments="false">
+          <pnp:Header Type="None" />
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1"
+                  ControlId="depts-hero-01"
+                  JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;depts-hero-01&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;City Departments&quot;,&quot;tagline&quot;:&quot;All 18 city departments at a glance — find contacts, resources, and information.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:55,&quot;showCta&quot;:false}}" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="2" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1"
+                  ControlId="depts-grid-01"
+                  JsonControlData="{&quot;id&quot;:&quot;c3d4e5f6-a7b8-9012-cdef-123456789012&quot;,&quot;instanceId&quot;:&quot;depts-grid-01&quot;,&quot;title&quot;:&quot;COSF Departments Grid&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;listName&quot;:&quot;Department Directory&quot;,&quot;showSearch&quot;:true,&quot;title&quot;:&quot;All City Departments&quot;}}" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <!-- ══ CITY MANAGER'S OFFICE ══════════════════════════════════ -->
+        <pnp:ClientSidePage
+          PageName="city-managers-office.aspx"
+          Title="City Manager's Office"
+          PromoteAsNewsArticle="false"
+          Overwrite="false"
+          Layout="Article"
+          EnableComments="false">
+          <pnp:Header Type="None" />
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1"
+                  ControlId="cmo-hero-01"
+                  JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;cmo-hero-01&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;City Manager's Office&quot;,&quot;tagline&quot;:&quot;Leading with integrity and vision to serve the residents of South Fulton.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;View Strategic Plan&quot;,&quot;ctaUrl&quot;:&quot;/SitePages/city-managers-office-priorities.aspx&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:true}}" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="2" Type="OneColumn">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1"
+                  ControlId="cmo-text-01"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;About the City Manager&apos;s Office&lt;/h2&gt;&lt;p&gt;The City Manager&apos;s Office oversees the day-to-day operations of the City of South Fulton, implements policy directives of the Mayor and City Council, and ensures that all city departments operate efficiently and effectively in service to our residents.&lt;/p&gt;&lt;h3&gt;Quick Navigation&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/city-managers-office-priorities.aspx&apos;&gt;Strategic Priorities&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/city-managers-office-memos.aspx&apos;&gt;Memos &amp;amp; Directives&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/city-managers-office-budget.aspx&apos;&gt;Budget Information&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="city-managers-office-priorities.aspx" Title="Strategic Priorities" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" />
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="cmo-pri-hero"
+                  JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;cmo-pri-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Strategic Priorities&quot;,&quot;tagline&quot;:&quot;City Manager's Office · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="2" Type="OneColumn">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="cmo-pri-text"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Strategic Priorities&lt;/h2&gt;&lt;p&gt;Add the City Manager&apos;s strategic priority documents and goals here. Use the SharePoint document library or embed a document from the Policy Library.&lt;/p&gt;&quot;}" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="city-managers-office-memos.aspx" Title="Memos &amp; Directives" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" />
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="cmo-memo-hero"
+                  JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;cmo-memo-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Memos &amp; Directives&quot;,&quot;tagline&quot;:&quot;Official communications from the City Manager's Office&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="city-managers-office-budget.aspx" Title="Budget Information" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" />
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="cmo-budget-hero"
+                  JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;cmo-budget-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Budget Information&quot;,&quot;tagline&quot;:&quot;City Manager's Office · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <!-- ══ HUMAN RESOURCES ════════════════════════════════════════ -->
+        <pnp:ClientSidePage
+          PageName="human-resources.aspx"
+          Title="Human Resources"
+          PromoteAsNewsArticle="false"
+          Overwrite="false"
+          Layout="Article"
+          EnableComments="false">
+          <pnp:Header Type="None" />
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="hr-hero-01"
+                  JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;hr-hero-01&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Human Resources&quot;,&quot;tagline&quot;:&quot;Supporting our most valuable asset — the people who serve South Fulton.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;View Benefits&quot;,&quot;ctaUrl&quot;:&quot;/SitePages/hr-benefits.aspx&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:true}}" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="2" Type="ThreeColumn">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="hr-col1"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Benefits&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/hr-benefits.aspx&apos;&gt;Health &amp;amp; Dental Insurance&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/hr-benefits.aspx&apos;&gt;Retirement / Pension&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/hr-benefits.aspx&apos;&gt;Life Insurance&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/hr-benefits.aspx&apos;&gt;Employee Assistance Program&lt;/a&gt;&lt;/p&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="hr-col2"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Policies&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/hr-policies.aspx&apos;&gt;Employee Handbook&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/hr-policies.aspx&apos;&gt;Code of Conduct&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/hr-policies.aspx&apos;&gt;Leave &amp;amp; Attendance&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/hr-policies.aspx&apos;&gt;Workplace Safety&lt;/a&gt;&lt;/p&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="3" ControlId="hr-col3"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Development&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/hr-training.aspx&apos;&gt;Training Calendar&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/hr-training.aspx&apos;&gt;Tuition Assistance&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/hr-onboarding.aspx&apos;&gt;New Employee Onboarding&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/hr-training.aspx&apos;&gt;Leadership Programs&lt;/a&gt;&lt;/p&gt;&quot;}" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="hr-benefits.aspx" Title="Benefits &amp; Enrollment" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="hr-ben-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;hr-ben-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Benefits &amp; Enrollment&quot;,&quot;tagline&quot;:&quot;Human Resources · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="hr-policies.aspx" Title="Policies &amp; Handbook" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="hr-pol-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;hr-pol-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Policies &amp; Handbook&quot;,&quot;tagline&quot;:&quot;Human Resources · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="hr-training.aspx" Title="Training &amp; Development" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="hr-trn-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;hr-trn-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Training &amp; Development&quot;,&quot;tagline&quot;:&quot;Human Resources · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="hr-onboarding.aspx" Title="New Employee Onboarding" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="hr-onb-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;hr-onb-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Welcome to the Team!&quot;,&quot;tagline&quot;:&quot;New Employee Onboarding · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;View Benefits&quot;,&quot;ctaUrl&quot;:&quot;/SitePages/hr-benefits.aspx&quot;,&quot;overlayOpacity&quot;:55,&quot;showCta&quot;:true}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <!-- ══ INFORMATION TECHNOLOGY ═════════════════════════════════ -->
+        <pnp:ClientSidePage
+          PageName="information-technology.aspx"
+          Title="Information Technology"
+          PromoteAsNewsArticle="false"
+          Overwrite="false"
+          Layout="Article"
+          EnableComments="false">
+          <pnp:Header Type="None" />
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="it-hero-01"
+                  JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;it-hero-01&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Information Technology&quot;,&quot;tagline&quot;:&quot;Powering city operations with secure, reliable, and innovative technology solutions.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;Submit a Help Desk Ticket&quot;,&quot;ctaUrl&quot;:&quot;/SitePages/it-helpdesk.aspx&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:true}}" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="2" Type="ThreeColumn">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="it-col1"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Support&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/it-helpdesk.aspx&apos;&gt;Submit a Help Desk Ticket&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/it-status.aspx&apos;&gt;System Status&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/it-resources.aspx&apos;&gt;How-To Guides&lt;/a&gt;&lt;br/&gt;Phone: (470) 809-7060&lt;/p&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="it-col2"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Security&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/it-security.aspx&apos;&gt;Security Policies&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/it-security.aspx&apos;&gt;Password Reset&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/it-security.aspx&apos;&gt;Report a Phishing Email&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/it-resources.aspx&apos;&gt;Multi-Factor Authentication&lt;/a&gt;&lt;/p&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="3" ControlId="it-col3"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/it-resources.aspx&apos;&gt;Software Catalog&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/it-resources.aspx&apos;&gt;Remote Access / VPN&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/it-resources.aspx&apos;&gt;Microsoft 365 Training&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/it-resources.aspx&apos;&gt;Equipment Requests&lt;/a&gt;&lt;/p&gt;&quot;}" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="it-helpdesk.aspx" Title="IT Help Desk" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="it-hd-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;it-hd-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;IT Help Desk&quot;,&quot;tagline&quot;:&quot;Submit a ticket or call (470) 809-7060 for immediate assistance.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="it-status.aspx" Title="System Status" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="it-st-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;it-st-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;System Status&quot;,&quot;tagline&quot;:&quot;Real-time status of city systems and services.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="it-resources.aspx" Title="IT Resources &amp; Guides" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="it-res-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;it-res-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;IT Resources &amp; Guides&quot;,&quot;tagline&quot;:&quot;Information Technology · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="it-security.aspx" Title="IT Security" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="it-sec-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;it-sec-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;IT Security&quot;,&quot;tagline&quot;:&quot;Protecting city systems, data, and employees from cyber threats.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <!-- ══ COMMUNICATIONS ══════════════════════════════════════════ -->
+        <pnp:ClientSidePage
+          PageName="communications.aspx"
+          Title="Communications"
+          PromoteAsNewsArticle="false"
+          Overwrite="false"
+          Layout="Article"
+          EnableComments="false">
+          <pnp:Header Type="None" />
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="comm-hero-01"
+                  JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;comm-hero-01&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Communications&quot;,&quot;tagline&quot;:&quot;Telling the South Fulton story with clarity, consistency, and community pride.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;Submit a Request&quot;,&quot;ctaUrl&quot;:&quot;/SitePages/comm-requests.aspx&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:true}}" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="2" Type="TwoColumn">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="comm-col1"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/comm-brand.aspx&apos;&gt;Brand Guidelines &amp;amp; Assets&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/comm-press.aspx&apos;&gt;Press Release Templates&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/comm-social.aspx&apos;&gt;Social Media Policy&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/comm-internal.aspx&apos;&gt;Internal Communications&lt;/a&gt;&lt;/p&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="comm-col2"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Requests&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/comm-requests.aspx&apos;&gt;Submit a Communications Request&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/comm-press.aspx&apos;&gt;Media Inquiries&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/comm-brand.aspx&apos;&gt;Request Design Help&lt;/a&gt;&lt;/p&gt;&quot;}" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="comm-press.aspx" Title="Press &amp; Media" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="comm-pr-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;comm-pr-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Press &amp; Media&quot;,&quot;tagline&quot;:&quot;Communications · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="comm-social.aspx" Title="Social Media" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="comm-sm-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;comm-sm-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Social Media Policy&quot;,&quot;tagline&quot;:&quot;Communications · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="comm-brand.aspx" Title="Brand Assets" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="comm-br-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;comm-br-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Brand Assets&quot;,&quot;tagline&quot;:&quot;Logos, fonts, colors, and templates for City of South Fulton communications.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="comm-internal.aspx" Title="Internal Communications" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="comm-int-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;comm-int-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Internal Communications&quot;,&quot;tagline&quot;:&quot;Communications · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="comm-requests.aspx" Title="Submit a Communications Request" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="comm-req-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;comm-req-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Submit a Communications Request&quot;,&quot;tagline&quot;:&quot;Need help with a press release, flyer, social post, or video? We're here.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <!-- ══ GENERAL SERVICES ═══════════════════════════════════════ -->
+        <pnp:ClientSidePage
+          PageName="general-services.aspx"
+          Title="General Services"
+          PromoteAsNewsArticle="false"
+          Overwrite="false"
+          Layout="Article"
+          EnableComments="false">
+          <pnp:Header Type="None" />
+          <pnp:Sections>
+            <pnp:Section Order="1" Type="OneColumnFullWidth">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="gs-hero-01"
+                  JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;gs-hero-01&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;General Services&quot;,&quot;tagline&quot;:&quot;Keeping city facilities, fleet, and operations running smoothly every day.&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;Submit a Work Order&quot;,&quot;ctaUrl&quot;:&quot;/SitePages/gs-facilities.aspx&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:true}}" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order="2" Type="TwoColumn">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="gs-col1"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Facilities&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/gs-facilities.aspx&apos;&gt;Submit a Work Order&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/gs-facilities.aspx&apos;&gt;Reserve a Conference Room&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/gs-facilities.aspx&apos;&gt;Building Access / Keys&lt;/a&gt;&lt;/p&gt;&lt;h3&gt;Fleet&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/gs-fleet.aspx&apos;&gt;Vehicle Requests&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/gs-fleet.aspx&apos;&gt;Mileage &amp;amp; Fuel Logs&lt;/a&gt;&lt;/p&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="gs-col2"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Procurement&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/gs-purchasing.aspx&apos;&gt;Purchase Requests&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/gs-purchasing.aspx&apos;&gt;Vendor List&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/gs-purchasing.aspx&apos;&gt;P-Card Policy&lt;/a&gt;&lt;/p&gt;&lt;h3&gt;Records&lt;/h3&gt;&lt;p&gt;&lt;a href=&apos;/SitePages/gs-records.aspx&apos;&gt;Records Retention Schedule&lt;/a&gt;&lt;br/&gt;&lt;a href=&apos;/SitePages/gs-records.aspx&apos;&gt;Public Records Requests&lt;/a&gt;&lt;/p&gt;&quot;}" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="gs-facilities.aspx" Title="Facilities Management" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="gs-fac-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;gs-fac-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Facilities Management&quot;,&quot;tagline&quot;:&quot;General Services · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="gs-fleet.aspx" Title="Fleet Management" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="gs-fl-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;gs-fl-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Fleet Management&quot;,&quot;tagline&quot;:&quot;General Services · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="gs-purchasing.aspx" Title="Purchasing &amp; Vendors" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="gs-pu-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;gs-pu-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Purchasing &amp; Vendors&quot;,&quot;tagline&quot;:&quot;General Services · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+        <pnp:ClientSidePage PageName="gs-records.aspx" Title="Records Management" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="None" /><pnp:Sections><pnp:Section Order="1" Type="OneColumnFullWidth"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1" ControlId="gs-rec-hero" JsonControlData="{&quot;id&quot;:&quot;d4e5f6a7-b8c9-0123-def0-234567890123&quot;,&quot;instanceId&quot;:&quot;gs-rec-hero&quot;,&quot;title&quot;:&quot;COSF Hero Banner&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;headline&quot;:&quot;Records Management&quot;,&quot;tagline&quot;:&quot;General Services · City of South Fulton&quot;,&quot;backgroundImageUrl&quot;:&quot;&quot;,&quot;ctaLabel&quot;:&quot;&quot;,&quot;ctaUrl&quot;:&quot;&quot;,&quot;overlayOpacity&quot;:60,&quot;showCta&quot;:false}}" />
+          </pnp:Controls></pnp:Section></pnp:Sections>
+        </pnp:ClientSidePage>
+
+      </pnp:ClientSidePages>
+
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+
+</pnp:Provisioning>
