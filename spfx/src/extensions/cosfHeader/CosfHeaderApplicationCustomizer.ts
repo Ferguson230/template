@@ -6,7 +6,6 @@ import {
 } from '@microsoft/sp-application-base';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { GlobalHeader } from './components/GlobalHeader';
 import { GlobalFooter } from './components/GlobalFooter';
 
 export interface ICosfHeaderApplicationCustomizerProperties {
@@ -15,66 +14,38 @@ export interface ICosfHeaderApplicationCustomizerProperties {
   logoUrl: string;
 }
 
+/**
+ * COSF Intranet Footer Extension — renders ONLY the bottom footer.
+ * The header is native SharePoint (shows real user, search, logo, nav).
+ * To edit footer links: update the "Intranet Footer Links" list on this site.
+ */
 export default class CosfHeaderApplicationCustomizer
   extends BaseApplicationCustomizer<ICosfHeaderApplicationCustomizerProperties> {
 
-  private _topPlaceholder: PlaceholderContent | undefined;
   private _bottomPlaceholder: PlaceholderContent | undefined;
 
   @override
   public onInit(): Promise<void> {
-    this.context.placeholderProvider.changedEvent.add(this, this._renderPlaceholders);
-    this._renderPlaceholders();
+    this.context.placeholderProvider.changedEvent.add(this, this._renderFooter);
+    this._renderFooter();
     return Promise.resolve();
   }
 
-  private _renderPlaceholders(): void {
-    // ── Header ──────────────────────────────────────────────────
-    if (!this._topPlaceholder) {
-      this._topPlaceholder = this.context.placeholderProvider.tryCreateContent(
-        PlaceholderName.Top,
-        { onDispose: this._onDisposeTop }
-      );
-    }
-
-    if (this._topPlaceholder) {
-      const headerElement = React.createElement(GlobalHeader, {
-        context: this.context,
-        siteTitle: this.properties.siteTitle || 'City of South Fulton',
-        tagLine: this.properties.tagLine || 'Employee Intranet Portal · A City on the Rise!',
-        logoUrl: this.properties.logoUrl || '',
-      });
-      ReactDOM.render(headerElement, this._topPlaceholder.domElement);
-    } else {
-      console.error('COSF Header: Could not find the Top placeholder.');
-    }
-
-    // ── Footer ──────────────────────────────────────────────────
+  private _renderFooter(): void {
     if (!this._bottomPlaceholder) {
       this._bottomPlaceholder = this.context.placeholderProvider.tryCreateContent(
         PlaceholderName.Bottom,
-        { onDispose: this._onDisposeBottom }
+        { onDispose: this._onDispose }
       );
     }
-
-    if (this._bottomPlaceholder) {
-      const footerElement = React.createElement(GlobalFooter, {
-        context: this.context,
-        siteTitle: this.properties.siteTitle || 'City of South Fulton',
-      });
-      ReactDOM.render(footerElement, this._bottomPlaceholder.domElement);
-    } else {
-      console.error('COSF Footer: Could not find the Bottom placeholder.');
-    }
+    if (!this._bottomPlaceholder) return;
+    ReactDOM.render(
+      React.createElement(GlobalFooter, { context: this.context }),
+      this._bottomPlaceholder.domElement
+    );
   }
 
-  private _onDisposeTop = (): void => {
-    if (this._topPlaceholder && this._topPlaceholder.domElement) {
-      ReactDOM.unmountComponentAtNode(this._topPlaceholder.domElement);
-    }
-  }
-
-  private _onDisposeBottom = (): void => {
+  private _onDispose = (): void => {
     if (this._bottomPlaceholder && this._bottomPlaceholder.domElement) {
       ReactDOM.unmountComponentAtNode(this._bottomPlaceholder.domElement);
     }
