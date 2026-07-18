@@ -29,49 +29,39 @@
           <pnp:StructuralNavigation RemoveExistingNodes="false">
             <pnp:NavigationNode Title="Home" Url="/SitePages/home.aspx" IsExternal="false" />
             <pnp:NavigationNode Title="City Manager's Office" Url="/SitePages/city-managers-office.aspx" IsExternal="false">
-              <pnp:NavigationNodes>
                 <pnp:NavigationNode Title="Overview"             Url="/SitePages/city-managers-office.aspx"            IsExternal="false" />
                 <pnp:NavigationNode Title="Strategic Priorities" Url="/SitePages/city-managers-office-priorities.aspx" IsExternal="false" />
                 <pnp:NavigationNode Title="Memos &amp; Directives" Url="/SitePages/city-managers-office-memos.aspx"   IsExternal="false" />
                 <pnp:NavigationNode Title="Budget"               Url="/SitePages/city-managers-office-budget.aspx"    IsExternal="false" />
-              </pnp:NavigationNodes>
             </pnp:NavigationNode>
             <pnp:NavigationNode Title="Human Resources" Url="/SitePages/human-resources.aspx" IsExternal="false">
-              <pnp:NavigationNodes>
                 <pnp:NavigationNode Title="Overview"         Url="/SitePages/human-resources.aspx"  IsExternal="false" />
                 <pnp:NavigationNode Title="Benefits"         Url="/SitePages/hr-benefits.aspx"      IsExternal="false" />
                 <pnp:NavigationNode Title="Policies"         Url="/SitePages/hr-policies.aspx"      IsExternal="false" />
                 <pnp:NavigationNode Title="Training"         Url="/SitePages/hr-training.aspx"      IsExternal="false" />
                 <pnp:NavigationNode Title="Onboarding"       Url="/SitePages/hr-onboarding.aspx"    IsExternal="false" />
-              </pnp:NavigationNodes>
             </pnp:NavigationNode>
             <pnp:NavigationNode Title="IT" Url="/SitePages/information-technology.aspx" IsExternal="false">
-              <pnp:NavigationNodes>
                 <pnp:NavigationNode Title="Overview"     Url="/SitePages/information-technology.aspx" IsExternal="false" />
                 <pnp:NavigationNode Title="Help Desk"    Url="/SitePages/it-helpdesk.aspx"            IsExternal="false" />
                 <pnp:NavigationNode Title="System Status" Url="/SitePages/it-status.aspx"             IsExternal="false" />
                 <pnp:NavigationNode Title="Resources"    Url="/SitePages/it-resources.aspx"           IsExternal="false" />
                 <pnp:NavigationNode Title="Security"     Url="/SitePages/it-security.aspx"            IsExternal="false" />
-              </pnp:NavigationNodes>
             </pnp:NavigationNode>
             <pnp:NavigationNode Title="Communications" Url="/SitePages/communications.aspx" IsExternal="false">
-              <pnp:NavigationNodes>
                 <pnp:NavigationNode Title="Overview"        Url="/SitePages/communications.aspx"  IsExternal="false" />
                 <pnp:NavigationNode Title="Press &amp; Media" Url="/SitePages/comm-press.aspx"    IsExternal="false" />
                 <pnp:NavigationNode Title="Social Media"    Url="/SitePages/comm-social.aspx"     IsExternal="false" />
                 <pnp:NavigationNode Title="Brand Assets"    Url="/SitePages/comm-brand.aspx"      IsExternal="false" />
                 <pnp:NavigationNode Title="Internal Comms"  Url="/SitePages/comm-internal.aspx"   IsExternal="false" />
                 <pnp:NavigationNode Title="Requests"        Url="/SitePages/comm-requests.aspx"   IsExternal="false" />
-              </pnp:NavigationNodes>
             </pnp:NavigationNode>
             <pnp:NavigationNode Title="General Services" Url="/SitePages/general-services.aspx" IsExternal="false">
-              <pnp:NavigationNodes>
                 <pnp:NavigationNode Title="Overview"    Url="/SitePages/general-services.aspx"  IsExternal="false" />
                 <pnp:NavigationNode Title="Facilities"  Url="/SitePages/gs-facilities.aspx"     IsExternal="false" />
                 <pnp:NavigationNode Title="Fleet"       Url="/SitePages/gs-fleet.aspx"          IsExternal="false" />
                 <pnp:NavigationNode Title="Purchasing"  Url="/SitePages/gs-purchasing.aspx"     IsExternal="false" />
                 <pnp:NavigationNode Title="Records"     Url="/SitePages/gs-records.aspx"        IsExternal="false" />
-              </pnp:NavigationNodes>
             </pnp:NavigationNode>
             <pnp:NavigationNode Title="Departments" Url="/SitePages/departments.aspx" IsExternal="false" />
           </pnp:StructuralNavigation>
