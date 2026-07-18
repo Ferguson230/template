@@ -204,10 +204,10 @@
 
         <!-- HOME — native Hero + News + Quick Links -->
         <pnp:ClientSidePage PageName="home.aspx" Title="City of South Fulton Intranet"
-          PromoteAsNewsArticle="false" Overwrite="true" Layout="Home" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="None" />
           <pnp:Sections>
-            <pnp:Section Order="1" Type="OneColumnFullWidth">
+            <pnp:Section Order="1" Type="OneColumn">
               <pnp:Controls>
                 <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1"
                   ControlId="c4bd7b2f-7b6e-4599-8485-16504575f590"
