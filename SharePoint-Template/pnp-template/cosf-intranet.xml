@@ -68,13 +68,6 @@
         CalendarType="1"
         FirstDayOfWeek="0" />
 
-      <!-- ── SITE FEATURES ──────────────────────────────────────── -->
-      <pnp:Features>
-        <pnp:WebFeatures>
-          <pnp:Feature ID="B6917CB1-93A0-4B97-A84D-7CF49975D4EC" Deactivate="false" />
-          <pnp:Feature ID="E2F64A7C-BFAC-4FF7-8D1E-F03B7B94F1E0" Deactivate="false" />
-        </pnp:WebFeatures>
-      </pnp:Features>
 
       <!-- ── NAVIGATION ─────────────────────────────────────────── -->
       <pnp:Navigation AddNewPagesToNavigation="false" CreateFriendlyUrlsForNewPages="false">
@@ -295,6 +288,14 @@
         </pnp:ListInstance>
 
       </pnp:Lists>
+
+      <!-- ── SITE FEATURES ──────────────────────────────────────── -->
+      <pnp:Features>
+        <pnp:WebFeatures>
+          <pnp:Feature ID="B6917CB1-93A0-4B97-A84D-7CF49975D4EC" Deactivate="false" />
+          <pnp:Feature ID="E2F64A7C-BFAC-4FF7-8D1E-F03B7B94F1E0" Deactivate="false" />
+        </pnp:WebFeatures>
+      </pnp:Features>
 
       <!-- ── APPLICATION CUSTOMIZER REGISTRATION ───────────────────
            Registers the COSF footer on every page.
