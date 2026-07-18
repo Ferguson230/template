@@ -100,9 +100,9 @@
           </pnp:Fields>
           <pnp:DataRows>
             <pnp:DataRow>
-              <pnp:Field Name="Title">Welcome to the COSF Intranet</pnp:Field>
-              <pnp:Field Name="AnnouncementBody">Welcome to the new City of South Fulton Employee Intranet — your one-stop hub for news, resources, and department information.</pnp:Field>
-              <pnp:Field Name="AnnouncementType">General</pnp:Field>
+              <pnp:DataValue FieldName="Title">Welcome to the COSF Intranet</pnp:DataValue>
+              <pnp:DataValue FieldName="AnnouncementBody">Welcome to the new City of South Fulton Employee Intranet — your one-stop hub for news, resources, and department information.</pnp:DataValue>
+              <pnp:DataValue FieldName="AnnouncementType">General</pnp:DataValue>
             </pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
@@ -122,24 +122,24 @@
             <pnp:Field Type="URL"    ID="{5gh21098-4e0g-4f7c-dg4i-2j7e48287e7g}" Name="DeptPageUrl"     DisplayName="Page URL"   Hidden="false" Required="false" />
           </pnp:Fields>
           <pnp:DataRows>
-            <pnp:DataRow><pnp:Field Name="Title">Police Department</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7777</pnp:Field><pnp:Field Name="DeptCategory">Public Safety</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Fire Department</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7700</pnp:Field><pnp:Field Name="DeptCategory">Public Safety</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Public Works</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7755</pnp:Field><pnp:Field Name="DeptCategory">Infrastructure</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Parks &amp; Recreation</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7270</pnp:Field><pnp:Field Name="DeptCategory">Community</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Finance</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7310</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">City Clerk</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7300</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Planning &amp; Zoning</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7150</pnp:Field><pnp:Field Name="DeptCategory">Development</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Human Resources</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7010</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Information Technology</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7060</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Communications</pnp:Field><pnp:Field Name="DeptPhone">(470) 552-4311</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">City Attorney</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7430</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Community Development</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7150</pnp:Field><pnp:Field Name="DeptCategory">Development</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Court Services</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7530</pnp:Field><pnp:Field Name="DeptCategory">Public Safety</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Procurement</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7600</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">General Services</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7755</pnp:Field><pnp:Field Name="DeptCategory">Infrastructure</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Risk Management</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7010</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Code Enforcement</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7150</pnp:Field><pnp:Field Name="DeptCategory">Development</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Mayor's Office</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7200</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Police Department</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7777</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Public Safety</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Fire Department</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7700</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Public Safety</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Public Works</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7755</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Infrastructure</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Parks &amp; Recreation</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7270</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Community</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Finance</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7310</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Administration</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">City Clerk</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7300</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Administration</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Planning &amp; Zoning</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7150</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Development</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Human Resources</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7010</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Administration</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Information Technology</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7060</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Administration</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Communications</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 552-4311</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Administration</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">City Attorney</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7430</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Administration</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Community Development</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7150</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Development</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Court Services</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7530</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Public Safety</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Procurement</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7600</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Administration</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">General Services</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7755</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Infrastructure</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Risk Management</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7010</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Administration</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Code Enforcement</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7150</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Development</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Mayor's Office</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7200</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Administration</pnp:DataValue></pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
 
@@ -156,11 +156,11 @@
             <pnp:Field Type="Number" ID="{8jk54321-7h3j-4i0f-gj7l-5m0h71510h0j}" Name="SortOrder"     DisplayName="Sort Order" Hidden="false" Required="false" />
           </pnp:Fields>
           <pnp:DataRows>
-            <pnp:DataRow><pnp:Field Name="Title">Benefits Portal</pnp:Field><pnp:Field Name="LinkUrl">/SitePages/hr-benefits.aspx, Benefits Portal</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">IT Help Desk</pnp:Field><pnp:Field Name="LinkUrl">/SitePages/it-helpdesk.aspx, IT Help Desk</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Policy Library</pnp:Field><pnp:Field Name="LinkUrl">/SitePages/hr-policies.aspx, Policy Library</pnp:Field><pnp:Field Name="SortOrder">3</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Time &amp; Attendance</pnp:Field><pnp:Field Name="LinkUrl">https://workforcenow.adp.com, Time &amp; Attendance</pnp:Field><pnp:Field Name="SortOrder">4</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Staff Directory</pnp:Field><pnp:Field Name="LinkUrl">/SitePages/departments.aspx, Staff Directory</pnp:Field><pnp:Field Name="SortOrder">5</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Benefits Portal</pnp:DataValue><pnp:DataValue FieldName="LinkUrl">/SitePages/hr-benefits.aspx, Benefits Portal</pnp:DataValue><pnp:DataValue FieldName="SortOrder">1</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">IT Help Desk</pnp:DataValue><pnp:DataValue FieldName="LinkUrl">/SitePages/it-helpdesk.aspx, IT Help Desk</pnp:DataValue><pnp:DataValue FieldName="SortOrder">2</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Policy Library</pnp:DataValue><pnp:DataValue FieldName="LinkUrl">/SitePages/hr-policies.aspx, Policy Library</pnp:DataValue><pnp:DataValue FieldName="SortOrder">3</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Time &amp; Attendance</pnp:DataValue><pnp:DataValue FieldName="LinkUrl">https://workforcenow.adp.com, Time &amp; Attendance</pnp:DataValue><pnp:DataValue FieldName="SortOrder">4</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Staff Directory</pnp:DataValue><pnp:DataValue FieldName="LinkUrl">/SitePages/departments.aspx, Staff Directory</pnp:DataValue><pnp:DataValue FieldName="SortOrder">5</pnp:DataValue></pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
 
@@ -177,15 +177,15 @@
             <pnp:Field Type="Number" ID="{1mn87654-0k6m-4l3i-jm0o-8p3k04843k3m}" Name="SortOrder"      DisplayName="Sort Order"  Hidden="false" Required="false" />
           </pnp:Fields>
           <pnp:DataRows>
-            <pnp:DataRow><pnp:Field Name="Title">About COSF</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/city-managers-office.aspx, About COSF</pnp:Field><pnp:Field Name="FooterColumn">City</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">City Council</pnp:Field><pnp:Field Name="FooterLinkUrl">https://www.cityofsouthfultonga.gov/216/City-Council, City Council</pnp:Field><pnp:Field Name="FooterColumn">City</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Benefits</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/hr-benefits.aspx, Benefits</pnp:Field><pnp:Field Name="FooterColumn">Human Resources</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Policies</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/hr-policies.aspx, Policies</pnp:Field><pnp:Field Name="FooterColumn">Human Resources</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Training</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/hr-training.aspx, Training</pnp:Field><pnp:Field Name="FooterColumn">Human Resources</pnp:Field><pnp:Field Name="SortOrder">3</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Help Desk</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/it-helpdesk.aspx, Help Desk</pnp:Field><pnp:Field Name="FooterColumn">IT</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">System Status</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/it-status.aspx, System Status</pnp:Field><pnp:Field Name="FooterColumn">IT</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Departments</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/departments.aspx, Departments</pnp:Field><pnp:Field Name="FooterColumn">Resources</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Quick Links</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/home.aspx, Quick Links</pnp:Field><pnp:Field Name="FooterColumn">Resources</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">About COSF</pnp:DataValue><pnp:DataValue FieldName="FooterLinkUrl">/SitePages/city-managers-office.aspx, About COSF</pnp:DataValue><pnp:DataValue FieldName="FooterColumn">City</pnp:DataValue><pnp:DataValue FieldName="SortOrder">1</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">City Council</pnp:DataValue><pnp:DataValue FieldName="FooterLinkUrl">https://www.cityofsouthfultonga.gov/216/City-Council, City Council</pnp:DataValue><pnp:DataValue FieldName="FooterColumn">City</pnp:DataValue><pnp:DataValue FieldName="SortOrder">2</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Benefits</pnp:DataValue><pnp:DataValue FieldName="FooterLinkUrl">/SitePages/hr-benefits.aspx, Benefits</pnp:DataValue><pnp:DataValue FieldName="FooterColumn">Human Resources</pnp:DataValue><pnp:DataValue FieldName="SortOrder">1</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Policies</pnp:DataValue><pnp:DataValue FieldName="FooterLinkUrl">/SitePages/hr-policies.aspx, Policies</pnp:DataValue><pnp:DataValue FieldName="FooterColumn">Human Resources</pnp:DataValue><pnp:DataValue FieldName="SortOrder">2</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Training</pnp:DataValue><pnp:DataValue FieldName="FooterLinkUrl">/SitePages/hr-training.aspx, Training</pnp:DataValue><pnp:DataValue FieldName="FooterColumn">Human Resources</pnp:DataValue><pnp:DataValue FieldName="SortOrder">3</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Help Desk</pnp:DataValue><pnp:DataValue FieldName="FooterLinkUrl">/SitePages/it-helpdesk.aspx, Help Desk</pnp:DataValue><pnp:DataValue FieldName="FooterColumn">IT</pnp:DataValue><pnp:DataValue FieldName="SortOrder">1</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">System Status</pnp:DataValue><pnp:DataValue FieldName="FooterLinkUrl">/SitePages/it-status.aspx, System Status</pnp:DataValue><pnp:DataValue FieldName="FooterColumn">IT</pnp:DataValue><pnp:DataValue FieldName="SortOrder">2</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Departments</pnp:DataValue><pnp:DataValue FieldName="FooterLinkUrl">/SitePages/departments.aspx, Departments</pnp:DataValue><pnp:DataValue FieldName="FooterColumn">Resources</pnp:DataValue><pnp:DataValue FieldName="SortOrder">1</pnp:DataValue></pnp:DataRow>
+            <pnp:DataRow><pnp:DataValue FieldName="Title">Quick Links</pnp:DataValue><pnp:DataValue FieldName="FooterLinkUrl">/SitePages/home.aspx, Quick Links</pnp:DataValue><pnp:DataValue FieldName="FooterColumn">Resources</pnp:DataValue><pnp:DataValue FieldName="SortOrder">2</pnp:DataValue></pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
 
