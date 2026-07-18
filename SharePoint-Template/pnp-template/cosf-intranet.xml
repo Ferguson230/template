@@ -232,7 +232,7 @@
           PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" />
           <pnp:Sections>
-            <pnp:Section Order="1" Type="OneColumnFullWidth">
+            <pnp:Section Order="1" Type="OneColumn">
               <pnp:Controls>
                 <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1"
                   ControlId="22222222-2222-2222-2222-222222222222"
