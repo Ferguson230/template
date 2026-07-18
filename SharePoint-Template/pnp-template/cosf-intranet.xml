@@ -17,9 +17,6 @@
   <pnp:Templates ID="COSF-Templates">
     <pnp:ProvisioningTemplate ID="COSF-Intranet-v5" Version="5" Scope="Web">
 
-      <!-- Regional settings -->
-      <pnp:RegionalSettings LocaleId="1033" TimeZone="11" WorkDayStartHour="480" WorkDayEndHour="1020" CalendarType="1" FirstDayOfWeek="0" />
-
       <!-- Property bag markers -->
       <pnp:PropertyBagEntries>
         <pnp:PropertyBagEntry Key="COSFIntranetVersion" Value="5.0" Overwrite="true" />
@@ -29,7 +26,7 @@
       <!-- Navigation -->
       <pnp:Navigation AddNewPagesToNavigation="false" CreateFriendlyUrlsForNewPages="false">
         <pnp:CurrentNavigation NavigationType="Structural">
-          <pnp:NavigationNodes>
+          <pnp:StructuralNavigation RemoveExistingNodes="false">
             <pnp:NavigationNode Title="Home" Url="/SitePages/home.aspx" IsExternal="false" />
             <pnp:NavigationNode Title="City Manager's Office" Url="/SitePages/city-managers-office.aspx" IsExternal="false">
               <pnp:NavigationNodes>
@@ -77,7 +74,7 @@
               </pnp:NavigationNodes>
             </pnp:NavigationNode>
             <pnp:NavigationNode Title="Departments" Url="/SitePages/departments.aspx" IsExternal="false" />
-          </pnp:NavigationNodes>
+          </pnp:StructuralNavigation>
         </pnp:CurrentNavigation>
       </pnp:Navigation>
 
