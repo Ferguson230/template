@@ -1,307 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  City of South Fulton — PnP Provisioning Template
-  Version:   3.0 (v4 package — native SharePoint experience)
-  Updated:   2026
-  Apply with: Invoke-PnPSiteTemplate -Path cosf-intranet.xml
+  City of South Fulton — PnP Provisioning Template v5
+  Apply: Connect-PnPOnline then Invoke-PnPSiteTemplate -Path cosf-intranet.xml
+  After applying: run Apply-COSFTheme.ps1 to set COSF brand colors.
 
-  WHAT THIS DOES
-  ══════════════
-  ✅ Creates navigation (7 top-level items, never deletes existing)
-  ✅ Creates 4 lists: City Announcements, Department Directory,
-       Intranet Quick Links, Intranet Footer Links
-  ✅ Registers COSF branded FOOTER Application Customizer (footer only)
-  ✅ Creates 23 pages — never overwrites existing pages (Overwrite=false)
-
-  NATIVE SHAREPOINT APPROACH
-  ══════════════════════════
-  Header: 100% native SharePoint — real logged-in user, real search,
-          real logo, real navigation. All editable in SP Admin.
-  Pages:  Home page has native Hero + News + Quick Links web parts.
-          Section pages use native SP page headers (Type=Default).
-          All web parts fully editable in SharePoint's edit mode.
-  Footer: COSF branded footer, links editable via "Intranet Footer Links" list.
-  Departments: Custom Departments Grid web part (searchable 3-col cards).
-
-  SAFE: This template NEVER deletes lists, libraries, nav nodes, or content.
+  SAFE: Never overwrites existing pages (Overwrite="false").
+        Never deletes lists or navigation nodes.
 -->
 <pnp:Provisioning
   xmlns:pnp="http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema https://raw.githubusercontent.com/pnp/PnP-Provisioning-Schema/master/ProvisioningSchema-2022-09.xsd">
 
-  <pnp:Preferences Generator="City of South Fulton IT Department" />
-
-
-  <!--
-    COSF BRAND THEME
-    ════════════════
-    Applies COSF navy/lime/metallic color palette to:
-      • Navigation bar (Strong emphasis = COSF blue nav bar)
-      • Buttons, links, interactive elements
-      • Accent stripe in native web parts
-
-    Requires Site Collection Admin (or Tenant Admin) when running
-    Invoke-PnPSiteTemplate. If you get a permissions error on the
-    Themes section, run this separately as Tenant Admin:
-      Add-PnPTenantTheme -Identity "COSF Intranet Theme" -Palette $palette -IsInverted $false
-  -->
+  <pnp:Preferences Generator="City of South Fulton IT" />
 
   <pnp:Templates ID="COSF-Templates">
-    <pnp:ProvisioningTemplate ID="COSF-Intranet-Template" Version="3" Scope="Web">
+    <pnp:ProvisioningTemplate ID="COSF-Intranet-v5" Version="5" Scope="Web">
 
-      <!-- ── WEB PROPERTIES ─────────────────────────────────────── -->
+      <!-- Regional settings -->
+      <pnp:RegionalSettings LocaleId="1033" TimeZone="11" WorkDayStartHour="480" WorkDayEndHour="1020" CalendarType="1" FirstDayOfWeek="0" />
+
+      <!-- Property bag markers -->
       <pnp:PropertyBagEntries>
-        <pnp:PropertyBagEntry Key="COSFIntranetVersion"   Value="3.0"     Overwrite="true" />
-        <pnp:PropertyBagEntry Key="COSFBrandApplied"      Value="true"    Overwrite="true" />
-        <pnp:PropertyBagEntry Key="COSFPrimaryColor"      Value="#0A72B8" Overwrite="true" />
-        <pnp:PropertyBagEntry Key="COSFAccentColor"       Value="#74B745" Overwrite="true" />
-        <pnp:PropertyBagEntry Key="COSFNavBarColor"       Value="#274B71" Overwrite="true" />
+        <pnp:PropertyBagEntry Key="COSFIntranetVersion" Value="5.0" Overwrite="true" />
+        <pnp:PropertyBagEntry Key="COSFBrandApplied"    Value="true" Overwrite="true" />
       </pnp:PropertyBagEntries>
 
-      <!-- ── REGIONAL SETTINGS ──────────────────────────────────── -->
-      <pnp:RegionalSettings
-        LocaleId="1033"
-        TimeZone="11"
-        WorkDayStartHour="480"
-        WorkDayEndHour="1020"
-        CalendarType="1"
-        FirstDayOfWeek="0" />
-
-
-      <!-- ── NAVIGATION ─────────────────────────────────────────── -->
+      <!-- Navigation -->
       <pnp:Navigation AddNewPagesToNavigation="false" CreateFriendlyUrlsForNewPages="false">
         <pnp:CurrentNavigation NavigationType="Structural">
           <pnp:NavigationNodes>
-
-            <pnp:NavigationNode Title="Home" Url="/" IsExternal="false" />
-
+            <pnp:NavigationNode Title="Home" Url="/SitePages/home.aspx" IsExternal="false" />
             <pnp:NavigationNode Title="City Manager's Office" Url="/SitePages/city-managers-office.aspx" IsExternal="false">
               <pnp:NavigationNodes>
-                <pnp:NavigationNode Title="Overview"               Url="/SitePages/city-managers-office.aspx"            IsExternal="false" />
-                <pnp:NavigationNode Title="Strategic Priorities"   Url="/SitePages/city-managers-office-priorities.aspx" IsExternal="false" />
-                <pnp:NavigationNode Title="Memos &amp; Directives" Url="/SitePages/city-managers-office-memos.aspx"      IsExternal="false" />
-                <pnp:NavigationNode Title="Budget"                 Url="/SitePages/city-managers-office-budget.aspx"     IsExternal="false" />
+                <pnp:NavigationNode Title="Overview"             Url="/SitePages/city-managers-office.aspx"            IsExternal="false" />
+                <pnp:NavigationNode Title="Strategic Priorities" Url="/SitePages/city-managers-office-priorities.aspx" IsExternal="false" />
+                <pnp:NavigationNode Title="Memos &amp; Directives" Url="/SitePages/city-managers-office-memos.aspx"   IsExternal="false" />
+                <pnp:NavigationNode Title="Budget"               Url="/SitePages/city-managers-office-budget.aspx"    IsExternal="false" />
               </pnp:NavigationNodes>
             </pnp:NavigationNode>
-
             <pnp:NavigationNode Title="Human Resources" Url="/SitePages/human-resources.aspx" IsExternal="false">
               <pnp:NavigationNodes>
-                <pnp:NavigationNode Title="Overview"                 Url="/SitePages/human-resources.aspx"  IsExternal="false" />
-                <pnp:NavigationNode Title="Benefits"                 Url="/SitePages/hr-benefits.aspx"      IsExternal="false" />
-                <pnp:NavigationNode Title="Policies &amp; Handbook"  Url="/SitePages/hr-policies.aspx"      IsExternal="false" />
-                <pnp:NavigationNode Title="Training &amp; Dev"       Url="/SitePages/hr-training.aspx"      IsExternal="false" />
-                <pnp:NavigationNode Title="Onboarding"               Url="/SitePages/hr-onboarding.aspx"    IsExternal="false" />
+                <pnp:NavigationNode Title="Overview"         Url="/SitePages/human-resources.aspx"  IsExternal="false" />
+                <pnp:NavigationNode Title="Benefits"         Url="/SitePages/hr-benefits.aspx"      IsExternal="false" />
+                <pnp:NavigationNode Title="Policies"         Url="/SitePages/hr-policies.aspx"      IsExternal="false" />
+                <pnp:NavigationNode Title="Training"         Url="/SitePages/hr-training.aspx"      IsExternal="false" />
+                <pnp:NavigationNode Title="Onboarding"       Url="/SitePages/hr-onboarding.aspx"    IsExternal="false" />
               </pnp:NavigationNodes>
             </pnp:NavigationNode>
-
-            <pnp:NavigationNode Title="Information Technology" Url="/SitePages/information-technology.aspx" IsExternal="false">
+            <pnp:NavigationNode Title="IT" Url="/SitePages/information-technology.aspx" IsExternal="false">
               <pnp:NavigationNodes>
-                <pnp:NavigationNode Title="Overview"                 Url="/SitePages/information-technology.aspx" IsExternal="false" />
-                <pnp:NavigationNode Title="System Status"            Url="/SitePages/it-status.aspx"              IsExternal="false" />
-                <pnp:NavigationNode Title="Help Desk"                Url="/SitePages/it-helpdesk.aspx"            IsExternal="false" />
-                <pnp:NavigationNode Title="Resources &amp; Guides"   Url="/SitePages/it-resources.aspx"           IsExternal="false" />
-                <pnp:NavigationNode Title="Security"                 Url="/SitePages/it-security.aspx"            IsExternal="false" />
+                <pnp:NavigationNode Title="Overview"     Url="/SitePages/information-technology.aspx" IsExternal="false" />
+                <pnp:NavigationNode Title="Help Desk"    Url="/SitePages/it-helpdesk.aspx"            IsExternal="false" />
+                <pnp:NavigationNode Title="System Status" Url="/SitePages/it-status.aspx"             IsExternal="false" />
+                <pnp:NavigationNode Title="Resources"    Url="/SitePages/it-resources.aspx"           IsExternal="false" />
+                <pnp:NavigationNode Title="Security"     Url="/SitePages/it-security.aspx"            IsExternal="false" />
               </pnp:NavigationNodes>
             </pnp:NavigationNode>
-
             <pnp:NavigationNode Title="Communications" Url="/SitePages/communications.aspx" IsExternal="false">
               <pnp:NavigationNodes>
-                <pnp:NavigationNode Title="Overview"                       Url="/SitePages/communications.aspx"  IsExternal="false" />
-                <pnp:NavigationNode Title="Press &amp; Media"              Url="/SitePages/comm-press.aspx"      IsExternal="false" />
-                <pnp:NavigationNode Title="Social Media"                   Url="/SitePages/comm-social.aspx"     IsExternal="false" />
-                <pnp:NavigationNode Title="Brand Assets"                   Url="/SitePages/comm-brand.aspx"      IsExternal="false" />
-                <pnp:NavigationNode Title="Internal Communications"        Url="/SitePages/comm-internal.aspx"   IsExternal="false" />
-                <pnp:NavigationNode Title="Submit a Request"               Url="/SitePages/comm-requests.aspx"   IsExternal="false" />
+                <pnp:NavigationNode Title="Overview"        Url="/SitePages/communications.aspx"  IsExternal="false" />
+                <pnp:NavigationNode Title="Press &amp; Media" Url="/SitePages/comm-press.aspx"    IsExternal="false" />
+                <pnp:NavigationNode Title="Social Media"    Url="/SitePages/comm-social.aspx"     IsExternal="false" />
+                <pnp:NavigationNode Title="Brand Assets"    Url="/SitePages/comm-brand.aspx"      IsExternal="false" />
+                <pnp:NavigationNode Title="Internal Comms"  Url="/SitePages/comm-internal.aspx"   IsExternal="false" />
+                <pnp:NavigationNode Title="Requests"        Url="/SitePages/comm-requests.aspx"   IsExternal="false" />
               </pnp:NavigationNodes>
             </pnp:NavigationNode>
-
             <pnp:NavigationNode Title="General Services" Url="/SitePages/general-services.aspx" IsExternal="false">
               <pnp:NavigationNodes>
-                <pnp:NavigationNode Title="Overview"              Url="/SitePages/general-services.aspx" IsExternal="false" />
-                <pnp:NavigationNode Title="Facilities"            Url="/SitePages/gs-facilities.aspx"    IsExternal="false" />
-                <pnp:NavigationNode Title="Fleet"                 Url="/SitePages/gs-fleet.aspx"         IsExternal="false" />
-                <pnp:NavigationNode Title="Purchasing &amp; Vendors" Url="/SitePages/gs-purchasing.aspx" IsExternal="false" />
-                <pnp:NavigationNode Title="Records Management"    Url="/SitePages/gs-records.aspx"       IsExternal="false" />
+                <pnp:NavigationNode Title="Overview"    Url="/SitePages/general-services.aspx"  IsExternal="false" />
+                <pnp:NavigationNode Title="Facilities"  Url="/SitePages/gs-facilities.aspx"     IsExternal="false" />
+                <pnp:NavigationNode Title="Fleet"       Url="/SitePages/gs-fleet.aspx"          IsExternal="false" />
+                <pnp:NavigationNode Title="Purchasing"  Url="/SitePages/gs-purchasing.aspx"     IsExternal="false" />
+                <pnp:NavigationNode Title="Records"     Url="/SitePages/gs-records.aspx"        IsExternal="false" />
               </pnp:NavigationNodes>
             </pnp:NavigationNode>
-
             <pnp:NavigationNode Title="Departments" Url="/SitePages/departments.aspx" IsExternal="false" />
-
           </pnp:NavigationNodes>
         </pnp:CurrentNavigation>
       </pnp:Navigation>
 
-      <!-- ── LISTS ──────────────────────────────────────────────── -->
+      <!-- Lists -->
       <pnp:Lists>
 
-        <!-- City Announcements list (used by native News web part) -->
-        <pnp:ListInstance
-          Title="City Announcements"
-          Description="Citywide announcements for the intranet home page."
-          TemplateType="104"
-          Url="Lists/CityAnnouncements"
-          EnableVersioning="true"
-          MaxVersionLimit="10"
-          OnQuickLaunch="false">
+        <!-- City Announcements -->
+        <pnp:ListInstance Title="City Announcements" Description="City-wide announcements and news"
+          TemplateType="100" Url="Lists/CityAnnouncements"
+          EnableVersioning="true" OnQuickLaunch="false">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+          </pnp:ContentTypeBindings>
           <pnp:Fields>
-            <pnp:Field Type="Choice" DisplayName="Category" Name="AnnouncementCategory" Required="FALSE" Group="COSF Columns">
-              <CHOICES>
-                <CHOICE>Important</CHOICE><CHOICE>HR Update</CHOICE><CHOICE>IT Notice</CHOICE>
-                <CHOICE>Event</CHOICE><CHOICE>General</CHOICE><CHOICE>Emergency</CHOICE>
-              </CHOICES>
-            </pnp:Field>
-            <pnp:Field Type="Choice" DisplayName="Priority" Name="AnnouncementPriority" Required="FALSE" Group="COSF Columns">
-              <CHOICES><CHOICE>High</CHOICE><CHOICE>Normal</CHOICE><CHOICE>Low</CHOICE></CHOICES>
+            <pnp:Field Type="Note"     ID="{9da97a8a-1da5-4a77-98d3-4bc10456e700}" Name="AnnouncementBody"  DisplayName="Body"       Hidden="false" Required="false" />
+            <pnp:Field Type="DateTime" ID="{4d2444c2-0e97-476c-a2a3-e9e4a9c73009}" Name="ExpirationDate"    DisplayName="Expires"    Hidden="false" Required="false" />
+            <pnp:Field Type="Choice"   ID="{1efc2a1f-0fb9-4d72-9f74-7b4b32c2c42e}" Name="AnnouncementType" DisplayName="Type"       Hidden="false" Required="false">
+              <CHOICES><CHOICE>General</CHOICE><CHOICE>Policy Update</CHOICE><CHOICE>Event</CHOICE><CHOICE>Emergency</CHOICE></CHOICES>
             </pnp:Field>
           </pnp:Fields>
-          <pnp:Views>
-            <View Name="Active Announcements" DefaultView="TRUE">
-              <Query>
-                <Where>
-                  <Or>
-                    <IsNull><FieldRef Name="Expires"/></IsNull>
-                    <Geq><FieldRef Name="Expires"/><Value Type="DateTime"><Today/></Value></Geq>
-                  </Or>
-                </Where>
-                <OrderBy>
-                  <FieldRef Name="AnnouncementPriority" Ascending="TRUE"/>
-                  <FieldRef Name="Modified" Ascending="FALSE"/>
-                </OrderBy>
-              </Query>
-              <ViewFields>
-                <FieldRef Name="LinkTitle"/><FieldRef Name="Body"/>
-                <FieldRef Name="AnnouncementCategory"/><FieldRef Name="AnnouncementPriority"/>
-                <FieldRef Name="Expires"/><FieldRef Name="Modified"/>
-              </ViewFields>
-            </View>
-          </pnp:Views>
-        </pnp:ListInstance>
-
-        <!-- Department Directory — 18 departments, feeds Departments Grid web part -->
-        <pnp:ListInstance
-          Title="Department Directory"
-          Description="All city departments — displayed as cards on the Departments page."
-          TemplateType="100"
-          Url="Lists/DepartmentDirectory"
-          EnableVersioning="true"
-          OnQuickLaunch="false">
-          <pnp:Fields>
-            <pnp:Field Type="Text"   DisplayName="Department Name"   Name="DeptName"       Required="TRUE"  Group="COSF Columns" />
-            <pnp:Field Type="Text"   DisplayName="Short Code"        Name="DeptShortCode"  Required="FALSE" Group="COSF Columns" />
-            <pnp:Field Type="Text"   DisplayName="Director / Leader" Name="DeptDirector"   Required="FALSE" Group="COSF Columns" />
-            <pnp:Field Type="Text"   DisplayName="Phone"             Name="DeptPhone"      Required="FALSE" Group="COSF Columns" />
-            <pnp:Field Type="Text"   DisplayName="Email"             Name="DeptEmail"      Required="FALSE" Group="COSF Columns" />
-            <pnp:Field Type="Note"   DisplayName="Description"       Name="DeptDesc"       Required="FALSE" Group="COSF Columns" RichText="FALSE" />
-            <pnp:Field Type="Text"   DisplayName="Page URL"          Name="DeptPageUrl"    Required="FALSE" Group="COSF Columns" />
-            <pnp:Field Type="Choice" DisplayName="Category"          Name="DeptCategory"   Required="FALSE" Group="COSF Columns">
-              <CHOICES>
-                <CHOICE>Public Safety</CHOICE><CHOICE>Administration</CHOICE>
-                <CHOICE>Infrastructure</CHOICE><CHOICE>Development</CHOICE>
-                <CHOICE>Technology</CHOICE><CHOICE>Legal</CHOICE><CHOICE>Justice</CHOICE>
-                <CHOICE>Operations</CHOICE><CHOICE>Enforcement</CHOICE><CHOICE>Quality of Life</CHOICE>
-              </CHOICES>
-            </pnp:Field>
-            <pnp:Field Type="Number" DisplayName="Sort Order" Name="DeptSortOrder" Required="FALSE" Group="COSF Columns" />
-          </pnp:Fields>
-          <pnp:DataRows UpdateBehavior="Skip">
-            <pnp:DataRow><pnp:Field Name="DeptName">Police Department</pnp:Field><pnp:Field Name="DeptShortCode">PD</pnp:Field><pnp:Field Name="DeptDirector">Chief of Police</pnp:Field><pnp:Field Name="DeptPhone">470-809-7750</pnp:Field><pnp:Field Name="DeptCategory">Public Safety</pnp:Field><pnp:Field Name="DeptDesc">Public safety, law enforcement, crime prevention, and community policing.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Fire &amp; Rescue</pnp:Field><pnp:Field Name="DeptShortCode">FIRE</pnp:Field><pnp:Field Name="DeptDirector">Fire Chief</pnp:Field><pnp:Field Name="DeptPhone">470-809-7760</pnp:Field><pnp:Field Name="DeptCategory">Public Safety</pnp:Field><pnp:Field Name="DeptDesc">Fire suppression, emergency medical services, hazmat response, and fire prevention.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Finance</pnp:Field><pnp:Field Name="DeptShortCode">FIN</pnp:Field><pnp:Field Name="DeptDirector">Finance Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7710</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field><pnp:Field Name="DeptDesc">Budget management, accounting, payroll, treasury, and financial reporting.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">3</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Procurement</pnp:Field><pnp:Field Name="DeptShortCode">PROC</pnp:Field><pnp:Field Name="DeptDirector">Procurement Manager</pnp:Field><pnp:Field Name="DeptPhone">470-809-7715</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field><pnp:Field Name="DeptDesc">Purchasing, vendor management, contract administration, and competitive bidding.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">4</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Public Works</pnp:Field><pnp:Field Name="DeptShortCode">PW</pnp:Field><pnp:Field Name="DeptDirector">Public Works Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7720</pnp:Field><pnp:Field Name="DeptCategory">Infrastructure</pnp:Field><pnp:Field Name="DeptDesc">Road maintenance, stormwater, sanitation, and infrastructure repair.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">5</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Community Development</pnp:Field><pnp:Field Name="DeptShortCode">CD</pnp:Field><pnp:Field Name="DeptDirector">Community Dev Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7725</pnp:Field><pnp:Field Name="DeptCategory">Development</pnp:Field><pnp:Field Name="DeptDesc">Planning, zoning, building permits, inspections, and economic development.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">6</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Parks &amp; Recreation</pnp:Field><pnp:Field Name="DeptShortCode">PARKS</pnp:Field><pnp:Field Name="DeptDirector">Parks Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7730</pnp:Field><pnp:Field Name="DeptCategory">Quality of Life</pnp:Field><pnp:Field Name="DeptDesc">City parks, recreation programs, special events, and the Parks Master Plan.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">7</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Municipal Court</pnp:Field><pnp:Field Name="DeptShortCode">COURT</pnp:Field><pnp:Field Name="DeptDirector">Chief Municipal Judge</pnp:Field><pnp:Field Name="DeptPhone">470-809-7272</pnp:Field><pnp:Field Name="DeptCategory">Justice</pnp:Field><pnp:Field Name="DeptDesc">Adjudication of ordinance violations, traffic citations, and code enforcement cases.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">8</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">City Clerk's Office</pnp:Field><pnp:Field Name="DeptShortCode">CLERK</pnp:Field><pnp:Field Name="DeptDirector">City Clerk</pnp:Field><pnp:Field Name="DeptPhone">470-809-7272</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field><pnp:Field Name="DeptDesc">Official city records, council agendas, minutes, elections, and open records requests.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">9</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">City Attorney</pnp:Field><pnp:Field Name="DeptShortCode">LAW</pnp:Field><pnp:Field Name="DeptDirector">City Attorney</pnp:Field><pnp:Field Name="DeptPhone">470-809-7705</pnp:Field><pnp:Field Name="DeptCategory">Legal</pnp:Field><pnp:Field Name="DeptDesc">Legal counsel, contract review, litigation support, and legislative compliance.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">10</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Human Resources</pnp:Field><pnp:Field Name="DeptShortCode">HR</pnp:Field><pnp:Field Name="DeptDirector">HR Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7740</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field><pnp:Field Name="DeptDesc">Recruitment, employee relations, benefits administration, training, and workforce development.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/human-resources.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">11</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Information Technology</pnp:Field><pnp:Field Name="DeptShortCode">IT</pnp:Field><pnp:Field Name="DeptDirector">IT Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7745</pnp:Field><pnp:Field Name="DeptCategory">Technology</pnp:Field><pnp:Field Name="DeptDesc">City technology infrastructure, cybersecurity, help desk support, and digital transformation.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/information-technology.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">12</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Communications</pnp:Field><pnp:Field Name="DeptShortCode">COMM</pnp:Field><pnp:Field Name="DeptDirector">Communications Director</pnp:Field><pnp:Field Name="DeptPhone">470-552-4311</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field><pnp:Field Name="DeptDesc">Public affairs, media relations, social media, branding, and internal communications.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/communications.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">13</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">General Services</pnp:Field><pnp:Field Name="DeptShortCode">GS</pnp:Field><pnp:Field Name="DeptDirector">General Services Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7755</pnp:Field><pnp:Field Name="DeptCategory">Operations</pnp:Field><pnp:Field Name="DeptDesc">Facilities management, city fleet, custodial services, records management, and purchasing.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/general-services.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">14</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Code Enforcement</pnp:Field><pnp:Field Name="DeptShortCode">CODE</pnp:Field><pnp:Field Name="DeptDirector">Code Enforcement Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7770</pnp:Field><pnp:Field Name="DeptCategory">Enforcement</pnp:Field><pnp:Field Name="DeptDesc">Property maintenance standards, zoning compliance, abandoned vehicles, and nuisance abatement.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">15</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Budget &amp; Strategy</pnp:Field><pnp:Field Name="DeptShortCode">BUDG</pnp:Field><pnp:Field Name="DeptDirector">Budget Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7712</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field><pnp:Field Name="DeptDesc">Annual budget preparation, performance management, strategic planning, and fiscal analysis.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">16</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Economic Development</pnp:Field><pnp:Field Name="DeptShortCode">ECON</pnp:Field><pnp:Field Name="DeptDirector">Economic Dev Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7780</pnp:Field><pnp:Field Name="DeptCategory">Development</pnp:Field><pnp:Field Name="DeptDesc">Business attraction, retention, small business support, and South Fulton grant programs.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">17</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="DeptName">Emergency Management</pnp:Field><pnp:Field Name="DeptShortCode">EM</pnp:Field><pnp:Field Name="DeptDirector">Emergency Mgmt Director</pnp:Field><pnp:Field Name="DeptPhone">470-809-7790</pnp:Field><pnp:Field Name="DeptCategory">Public Safety</pnp:Field><pnp:Field Name="DeptDesc">Disaster preparedness, EOC coordination, hazard mitigation planning, and community resilience.</pnp:Field><pnp:Field Name="DeptPageUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="DeptSortOrder">18</pnp:Field></pnp:DataRow>
+          <pnp:DataRows>
+            <pnp:DataRow>
+              <pnp:Field Name="Title">Welcome to the COSF Intranet</pnp:Field>
+              <pnp:Field Name="AnnouncementBody">Welcome to the new City of South Fulton Employee Intranet — your one-stop hub for news, resources, and department information.</pnp:Field>
+              <pnp:Field Name="AnnouncementType">General</pnp:Field>
+            </pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
 
-        <!-- Intranet Quick Links — also used by the native Quick Links web part -->
-        <pnp:ListInstance
-          Title="Intranet Quick Links"
-          Description="Quick links shown on the home page."
-          TemplateType="100"
-          Url="Lists/IntranetQuickLinks"
-          EnableVersioning="true"
-          OnQuickLaunch="false">
+        <!-- Department Directory -->
+        <pnp:ListInstance Title="Department Directory" Description="City department listings"
+          TemplateType="100" Url="Lists/DepartmentDirectory"
+          EnableVersioning="true" OnQuickLaunch="false">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+          </pnp:ContentTypeBindings>
           <pnp:Fields>
-            <pnp:Field Type="Text"   DisplayName="URL"        Name="QuickLinkUrl"  Required="TRUE"  Group="COSF Columns" />
-            <pnp:Field Type="Text"   DisplayName="Icon"       Name="QuickLinkIcon" Required="FALSE" Group="COSF Columns" />
-            <pnp:Field Type="Number" DisplayName="Sort Order" Name="QuickLinkSort" Required="FALSE" Group="COSF Columns" />
+            <pnp:Field Type="Text"   ID="{1cd76456-0a8c-4b38-9c0e-8f3a04843a3c}" Name="DeptPhone"       DisplayName="Phone"      Hidden="false" Required="false" />
+            <pnp:Field Type="Text"   ID="{2de98765-1b7d-4c49-ad1f-9g4b15954b4d}" Name="DeptLocation"    DisplayName="Location"   Hidden="false" Required="false" />
+            <pnp:Field Type="Text"   ID="{3ef09876-2c8e-4d5a-be2g-0h5c26065c5e}" Name="DeptDirector"    DisplayName="Director"   Hidden="false" Required="false" />
+            <pnp:Field Type="Text"   ID="{4fg10987-3d9f-4e6b-cf3h-1i6d37176d6f}" Name="DeptCategory"    DisplayName="Category"   Hidden="false" Required="false" />
+            <pnp:Field Type="URL"    ID="{5gh21098-4e0g-4f7c-dg4i-2j7e48287e7g}" Name="DeptPageUrl"     DisplayName="Page URL"   Hidden="false" Required="false" />
           </pnp:Fields>
-          <pnp:DataRows UpdateBehavior="Skip">
-            <pnp:DataRow><pnp:Field Name="Title">Submit a Form</pnp:Field><pnp:Field Name="QuickLinkUrl">/SitePages/forms.aspx</pnp:Field><pnp:Field Name="QuickLinkIcon">FileText</pnp:Field><pnp:Field Name="QuickLinkSort">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Time &amp; Attendance</pnp:Field><pnp:Field Name="QuickLinkUrl">https://workforcenow.adp.com</pnp:Field><pnp:Field Name="QuickLinkIcon">Calendar</pnp:Field><pnp:Field Name="QuickLinkSort">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Benefits Portal</pnp:Field><pnp:Field Name="QuickLinkUrl">/SitePages/hr-benefits.aspx</pnp:Field><pnp:Field Name="QuickLinkIcon">Heart</pnp:Field><pnp:Field Name="QuickLinkSort">3</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">IT Help Desk</pnp:Field><pnp:Field Name="QuickLinkUrl">/SitePages/it-helpdesk.aspx</pnp:Field><pnp:Field Name="QuickLinkIcon">Laptop</pnp:Field><pnp:Field Name="QuickLinkSort">4</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Policy Library</pnp:Field><pnp:Field Name="QuickLinkUrl">/SitePages/hr-policies.aspx</pnp:Field><pnp:Field Name="QuickLinkIcon">BookOpen</pnp:Field><pnp:Field Name="QuickLinkSort">5</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Staff Directory</pnp:Field><pnp:Field Name="QuickLinkUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="QuickLinkIcon">Users</pnp:Field><pnp:Field Name="QuickLinkSort">6</pnp:Field></pnp:DataRow>
+          <pnp:DataRows>
+            <pnp:DataRow><pnp:Field Name="Title">Police Department</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7777</pnp:Field><pnp:Field Name="DeptCategory">Public Safety</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Fire Department</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7700</pnp:Field><pnp:Field Name="DeptCategory">Public Safety</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Public Works</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7755</pnp:Field><pnp:Field Name="DeptCategory">Infrastructure</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Parks &amp; Recreation</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7270</pnp:Field><pnp:Field Name="DeptCategory">Community</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Finance</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7310</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">City Clerk</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7300</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Planning &amp; Zoning</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7150</pnp:Field><pnp:Field Name="DeptCategory">Development</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Human Resources</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7010</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Information Technology</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7060</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Communications</pnp:Field><pnp:Field Name="DeptPhone">(470) 552-4311</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">City Attorney</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7430</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Community Development</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7150</pnp:Field><pnp:Field Name="DeptCategory">Development</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Court Services</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7530</pnp:Field><pnp:Field Name="DeptCategory">Public Safety</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Procurement</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7600</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">General Services</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7755</pnp:Field><pnp:Field Name="DeptCategory">Infrastructure</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Risk Management</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7010</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Code Enforcement</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7150</pnp:Field><pnp:Field Name="DeptCategory">Development</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Mayor's Office</pnp:Field><pnp:Field Name="DeptPhone">(470) 809-7200</pnp:Field><pnp:Field Name="DeptCategory">Administration</pnp:Field></pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
 
-        <!--
-          ══ INTRANET FOOTER LINKS ══════════════════════════════════════
-          Editors update this list to change the footer — no code deploy needed.
-          Columns: Title (link text), FooterLinkUrl, FooterColumn (heading), SortOrder
-          The GlobalFooter.tsx Application Customizer reads from this list at runtime.
-        -->
-        <pnp:ListInstance
-          Title="Intranet Footer Links"
-          Description="Links shown in the site footer. Edit this list to update footer links without any code deployment."
-          TemplateType="100"
-          Url="Lists/IntranetFooterLinks"
-          EnableVersioning="true"
-          OnQuickLaunch="false">
+        <!-- Intranet Quick Links -->
+        <pnp:ListInstance Title="Intranet Quick Links" Description="Quick access links for the intranet home page"
+          TemplateType="100" Url="Lists/IntranetQuickLinks"
+          EnableVersioning="false" OnQuickLaunch="false">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+          </pnp:ContentTypeBindings>
           <pnp:Fields>
-            <pnp:Field Type="Text"   DisplayName="Footer Link URL" Name="FooterLinkUrl" Required="TRUE"  Group="COSF Columns" />
-            <pnp:Field Type="Text"   DisplayName="Footer Column"   Name="FooterColumn"  Required="TRUE"  Group="COSF Columns" />
-            <pnp:Field Type="Number" DisplayName="Sort Order"      Name="SortOrder"     Required="FALSE" Group="COSF Columns" />
+            <pnp:Field Type="URL"    ID="{6hi32109-5f1h-4g8d-eh5j-3k8f59398f8h}" Name="LinkUrl"       DisplayName="Link URL"   Hidden="false" Required="true" />
+            <pnp:Field Type="Text"   ID="{7ij43210-6g2i-4h9e-fi6k-4l9g60409g9i}" Name="LinkIcon"      DisplayName="Icon Name"  Hidden="false" Required="false" />
+            <pnp:Field Type="Number" ID="{8jk54321-7h3j-4i0f-gj7l-5m0h71510h0j}" Name="SortOrder"     DisplayName="Sort Order" Hidden="false" Required="false" />
           </pnp:Fields>
-          <pnp:DataRows UpdateBehavior="Skip">
-            <pnp:DataRow><pnp:Field Name="Title">City Manager</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/city-managers-office.aspx</pnp:Field><pnp:Field Name="FooterColumn">City Manager's Office</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Strategic Priorities</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/city-managers-office-priorities.aspx</pnp:Field><pnp:Field Name="FooterColumn">City Manager's Office</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Memos &amp; Directives</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/city-managers-office-memos.aspx</pnp:Field><pnp:Field Name="FooterColumn">City Manager's Office</pnp:Field><pnp:Field Name="SortOrder">3</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Benefits</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/hr-benefits.aspx</pnp:Field><pnp:Field Name="FooterColumn">Human Resources</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Policies &amp; Handbook</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/hr-policies.aspx</pnp:Field><pnp:Field Name="FooterColumn">Human Resources</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Training</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/hr-training.aspx</pnp:Field><pnp:Field Name="FooterColumn">Human Resources</pnp:Field><pnp:Field Name="SortOrder">3</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Help Desk</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/it-helpdesk.aspx</pnp:Field><pnp:Field Name="FooterColumn">Information Technology</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">System Status</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/it-status.aspx</pnp:Field><pnp:Field Name="FooterColumn">Information Technology</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">IT Resources</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/it-resources.aspx</pnp:Field><pnp:Field Name="FooterColumn">Information Technology</pnp:Field><pnp:Field Name="SortOrder">3</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">City News</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/communications.aspx</pnp:Field><pnp:Field Name="FooterColumn">Communications</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Press Releases</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/comm-press.aspx</pnp:Field><pnp:Field Name="FooterColumn">Communications</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Brand Assets</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/comm-brand.aspx</pnp:Field><pnp:Field Name="FooterColumn">Communications</pnp:Field><pnp:Field Name="SortOrder">3</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Facilities &amp; Work Orders</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/gs-facilities.aspx</pnp:Field><pnp:Field Name="FooterColumn">General Services</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Procurement</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/gs-purchasing.aspx</pnp:Field><pnp:Field Name="FooterColumn">General Services</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Fleet</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/gs-fleet.aspx</pnp:Field><pnp:Field Name="FooterColumn">General Services</pnp:Field><pnp:Field Name="SortOrder">3</pnp:Field></pnp:DataRow>
-            <pnp:DataRow><pnp:Field Name="Title">Departments</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/departments.aspx</pnp:Field><pnp:Field Name="FooterColumn">General Services</pnp:Field><pnp:Field Name="SortOrder">4</pnp:Field></pnp:DataRow>
+          <pnp:DataRows>
+            <pnp:DataRow><pnp:Field Name="Title">Benefits Portal</pnp:Field><pnp:Field Name="LinkUrl">/SitePages/hr-benefits.aspx, Benefits Portal</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">IT Help Desk</pnp:Field><pnp:Field Name="LinkUrl">/SitePages/it-helpdesk.aspx, IT Help Desk</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Policy Library</pnp:Field><pnp:Field Name="LinkUrl">/SitePages/hr-policies.aspx, Policy Library</pnp:Field><pnp:Field Name="SortOrder">3</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Time &amp; Attendance</pnp:Field><pnp:Field Name="LinkUrl">https://workforcenow.adp.com, Time &amp; Attendance</pnp:Field><pnp:Field Name="SortOrder">4</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Staff Directory</pnp:Field><pnp:Field Name="LinkUrl">/SitePages/departments.aspx, Staff Directory</pnp:Field><pnp:Field Name="SortOrder">5</pnp:Field></pnp:DataRow>
+          </pnp:DataRows>
+        </pnp:ListInstance>
+
+        <!-- Intranet Footer Links -->
+        <pnp:ListInstance Title="Intranet Footer Links" Description="Footer links — edit here to update the footer on all pages"
+          TemplateType="100" Url="Lists/IntranetFooterLinks"
+          EnableVersioning="false" OnQuickLaunch="false">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+          </pnp:ContentTypeBindings>
+          <pnp:Fields>
+            <pnp:Field Type="URL"    ID="{9kl65432-8i4k-4j1g-hk8m-6n1i82621i1k}" Name="FooterLinkUrl"  DisplayName="Link URL"    Hidden="false" Required="true" />
+            <pnp:Field Type="Text"   ID="{0lm76543-9j5l-4k2h-il9n-7o2j93732j2l}" Name="FooterColumn"   DisplayName="Column"      Hidden="false" Required="true" />
+            <pnp:Field Type="Number" ID="{1mn87654-0k6m-4l3i-jm0o-8p3k04843k3m}" Name="SortOrder"      DisplayName="Sort Order"  Hidden="false" Required="false" />
+          </pnp:Fields>
+          <pnp:DataRows>
+            <pnp:DataRow><pnp:Field Name="Title">About COSF</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/city-managers-office.aspx, About COSF</pnp:Field><pnp:Field Name="FooterColumn">City</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">City Council</pnp:Field><pnp:Field Name="FooterLinkUrl">https://www.cityofsouthfultonga.gov/216/City-Council, City Council</pnp:Field><pnp:Field Name="FooterColumn">City</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Benefits</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/hr-benefits.aspx, Benefits</pnp:Field><pnp:Field Name="FooterColumn">Human Resources</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Policies</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/hr-policies.aspx, Policies</pnp:Field><pnp:Field Name="FooterColumn">Human Resources</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Training</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/hr-training.aspx, Training</pnp:Field><pnp:Field Name="FooterColumn">Human Resources</pnp:Field><pnp:Field Name="SortOrder">3</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Help Desk</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/it-helpdesk.aspx, Help Desk</pnp:Field><pnp:Field Name="FooterColumn">IT</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">System Status</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/it-status.aspx, System Status</pnp:Field><pnp:Field Name="FooterColumn">IT</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Departments</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/departments.aspx, Departments</pnp:Field><pnp:Field Name="FooterColumn">Resources</pnp:Field><pnp:Field Name="SortOrder">1</pnp:Field></pnp:DataRow>
+            <pnp:DataRow><pnp:Field Name="Title">Quick Links</pnp:Field><pnp:Field Name="FooterLinkUrl">/SitePages/home.aspx, Quick Links</pnp:Field><pnp:Field Name="FooterColumn">Resources</pnp:Field><pnp:Field Name="SortOrder">2</pnp:Field></pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
 
       </pnp:Lists>
 
-      <!-- ── SITE FEATURES ──────────────────────────────────────── -->
+      <!-- Features -->
       <pnp:Features>
         <pnp:WebFeatures>
           <pnp:Feature ID="B6917CB1-93A0-4B97-A84D-7CF49975D4EC" Deactivate="false" />
-          <pnp:Feature ID="E2F64A7C-BFAC-4FF7-8D1E-F03B7B94F1E0" Deactivate="false" />
         </pnp:WebFeatures>
       </pnp:Features>
 
-      <!-- ── APPLICATION CUSTOMIZER REGISTRATION ───────────────────
-           Registers the COSF footer on every page.
-           ComponentId = CosfHeaderApplicationCustomizer.manifest.json id
-           If already registered, SharePoint skips the duplicate.
-      ─────────────────────────────────────────────────────────────── -->
+      <!-- Footer App Customizer registration -->
       <pnp:CustomActions>
         <pnp:WebCustomActions>
           <pnp:CustomAction
@@ -315,293 +212,298 @@
         </pnp:WebCustomActions>
       </pnp:CustomActions>
 
-      <!-- ── SITE PAGES ─────────────────────────────────────────────
-           Overwrite="false" — existing pages are NEVER overwritten.
-
-           HOME PAGE (home.aspx):
-             • Section 1 — Native Hero web part (full-width, fully editable)
-             • Section 2 — Native News + Quick Links (two-column)
-
-           SECTION PAGES (city-managers-office, HR, IT, Comms, GS):
-             • Header Type="Default" — native SharePoint page title banner
-             • Section 1 — Text web part with quick-nav links (editable)
-
-           DEPARTMENTS PAGE (departments.aspx):
-             • Header Type="Default" — native SP title banner
-             • Section 1 — COSF Departments Grid (custom web part, only one kept)
-
-           SUB-PAGES (hr-benefits, it-helpdesk, etc.):
-             • Header Type="Default" — native SP title banner
-             • Blank section for editors to add content
-      ──────────────────────────────────────────────────────────────── -->
+      <!-- Pages (all native SP web parts, fully editable) -->
       <pnp:ClientSidePages>
 
-        <!-- ══ HOME PAGE ══════════════════════════════════════════════
-             Uses NATIVE SharePoint web parts for full editability.
-             Hero ID:       c4bd7b2f-7b6e-4599-8485-16504575f590 (SP built-in)
-             News ID:       8c88f208-6c77-4bdb-86a0-0c47b4316588 (SP built-in)
-             Quick Links ID: c70391ea-0b10-4ee9-b2b4-006d3fcad0cd (SP built-in)
-        ══════════════════════════════════════════════════════════════ -->
-        <pnp:ClientSidePage
-          PageName="home.aspx"
-          Title="COSF Intranet Home"
-          PromoteAsNewsArticle="false"
-          Overwrite="false"
-          Layout="Home"
-          EnableComments="false">
+        <!-- HOME — native Hero + News + Quick Links -->
+        <pnp:ClientSidePage PageName="home.aspx" Title="City of South Fulton Intranet"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Home" EnableComments="false">
           <pnp:Header Type="None" />
           <pnp:Sections>
-            <!-- Full-width native Hero banner — double-click to edit in SP -->
             <pnp:Section Order="1" Type="OneColumnFullWidth">
               <pnp:Controls>
                 <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1"
-                  ControlId="05473507-06a1-4729-8cd1-aa883f7a77a1"
-                  JsonControlData="{&quot;id&quot;:&quot;c4bd7b2f-7b6e-4599-8485-16504575f590&quot;,&quot;instanceId&quot;:&quot;home-hero-01&quot;,&quot;title&quot;:&quot;Hero&quot;,&quot;description&quot;:&quot;Showcase important content&quot;,&quot;dataVersion&quot;:&quot;1.4&quot;,&quot;properties&quot;:{&quot;heroLayoutThreshold&quot;:640,&quot;carouselLayoutMaxWidth&quot;:639,&quot;layoutCategory&quot;:0,&quot;layout&quot;:5,&quot;content&quot;:[{&quot;id&quot;:&quot;1a2b3c4d-5e6f-7890-ab12-cd34ef567890&quot;,&quot;type&quot;:&quot;UrlLink&quot;,&quot;title&quot;:&quot;Welcome to the City of South Fulton Intranet&quot;,&quot;description&quot;:&quot;Your hub for city resources, news, and department information.&quot;,&quot;url&quot;:&quot;/SitePages/departments.aspx&quot;,&quot;imageUrl&quot;:&quot;&quot;,&quot;imageSourceType&quot;:4,&quot;altText&quot;:&quot;City of South Fulton&quot;,&quot;showDescription&quot;:true,&quot;callToAction&quot;:&quot;Explore Departments&quot;,&quot;callToActionUrl&quot;:&quot;/SitePages/departments.aspx&quot;}]}}" />
+                  ControlId="c4bd7b2f-7b6e-4599-8485-16504575f590"
+                  JsonControlData="{&quot;id&quot;:&quot;c4bd7b2f-7b6e-4599-8485-16504575f590&quot;,&quot;instanceId&quot;:&quot;c4bd7b2f-7b6e-4599-8485-16504575f590&quot;,&quot;title&quot;:&quot;Hero&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;1.4&quot;,&quot;properties&quot;:{&quot;layoutCategory&quot;:0,&quot;layout&quot;:5,&quot;content&quot;:[{&quot;id&quot;:&quot;11111111-1111-1111-1111-111111111111&quot;,&quot;type&quot;:&quot;UrlLink&quot;,&quot;title&quot;:&quot;Welcome to the City of South Fulton Employee Intranet&quot;,&quot;description&quot;:&quot;Your hub for city resources, news, and department information.&quot;,&quot;url&quot;:&quot;/SitePages/departments.aspx&quot;,&quot;imageUrl&quot;:&quot;&quot;,&quot;imageSourceType&quot;:4,&quot;altText&quot;:&quot;City of South Fulton&quot;,&quot;showDescription&quot;:true,&quot;callToAction&quot;:&quot;Explore Departments&quot;}]}}" />
               </pnp:Controls>
             </pnp:Section>
-            <!-- Two-column: News + Quick Links (both native, fully editable) -->
             <pnp:Section Order="2" Type="TwoColumn">
               <pnp:Controls>
                 <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1"
-                  ControlId="9b9f039b-d65f-449d-84ae-a49868a590df"
-                  JsonControlData="{&quot;id&quot;:&quot;8c88f208-6c77-4bdb-86a0-0c47b4316588&quot;,&quot;instanceId&quot;:&quot;home-news-01&quot;,&quot;title&quot;:&quot;News&quot;,&quot;description&quot;:&quot;Keep employees in the loop&quot;,&quot;dataVersion&quot;:&quot;9.2&quot;,&quot;properties&quot;:{&quot;layoutId&quot;:&quot;FeaturedNews&quot;,&quot;dataProviderId&quot;:&quot;News&quot;,&quot;emptyStateHelpItemsCount&quot;:1,&quot;showNewsStateHelpItemsCount&quot;:1,&quot;prefetchCount&quot;:4,&quot;filters&quot;:[{&quot;filterType&quot;:1,&quot;value&quot;:&quot;&quot;}],&quot;webId&quot;:&quot;&quot;,&quot;siteId&quot;:&quot;&quot;,&quot;hubId&quot;:&quot;&quot;}}" />
+                  ControlId="8c88f208-6c77-4bdb-86a0-0c47b4316588"
+                  JsonControlData="{&quot;id&quot;:&quot;8c88f208-6c77-4bdb-86a0-0c47b4316588&quot;,&quot;instanceId&quot;:&quot;8c88f208-6c77-4bdb-86a0-0c47b4316588&quot;,&quot;title&quot;:&quot;News&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;9.2&quot;,&quot;properties&quot;:{&quot;layoutId&quot;:&quot;FeaturedNews&quot;,&quot;dataProviderId&quot;:&quot;News&quot;,&quot;prefetchCount&quot;:4,&quot;filters&quot;:[{&quot;filterType&quot;:1,&quot;value&quot;:&quot;&quot;}]}}" />
                 <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="2"
-                  ControlId="6ef79375-657c-43b2-b539-d94432e4e1b5"
-                  JsonControlData="{&quot;id&quot;:&quot;c70391ea-0b10-4ee9-b2b4-006d3fcad0cd&quot;,&quot;instanceId&quot;:&quot;home-ql-01&quot;,&quot;title&quot;:&quot;Quick links&quot;,&quot;description&quot;:&quot;Add links to important resources&quot;,&quot;dataVersion&quot;:&quot;2.2&quot;,&quot;properties&quot;:{&quot;items&quot;:[{&quot;sourceItem&quot;:{&quot;url&quot;:&quot;/SitePages/hr-benefits.aspx&quot;,&quot;title&quot;:&quot;Benefits Portal&quot;},&quot;thumbnailType&quot;:2,&quot;id&quot;:1,&quot;description&quot;:&quot;&quot;,&quot;fabricReactIcon&quot;:{&quot;iconName&quot;:&quot;HeartFill&quot;}},{&quot;sourceItem&quot;:{&quot;url&quot;:&quot;/SitePages/it-helpdesk.aspx&quot;,&quot;title&quot;:&quot;IT Help Desk&quot;},&quot;thumbnailType&quot;:2,&quot;id&quot;:2,&quot;description&quot;:&quot;&quot;,&quot;fabricReactIcon&quot;:{&quot;iconName&quot;:&quot;Headset&quot;}},{&quot;sourceItem&quot;:{&quot;url&quot;:&quot;/SitePages/hr-policies.aspx&quot;,&quot;title&quot;:&quot;Policy Library&quot;},&quot;thumbnailType&quot;:2,&quot;id&quot;:3,&quot;description&quot;:&quot;&quot;,&quot;fabricReactIcon&quot;:{&quot;iconName&quot;:&quot;BookAnswers&quot;}},{&quot;sourceItem&quot;:{&quot;url&quot;:&quot;/SitePages/departments.aspx&quot;,&quot;title&quot;:&quot;Staff Directory&quot;},&quot;thumbnailType&quot;:2,&quot;id&quot;:4,&quot;description&quot;:&quot;&quot;,&quot;fabricReactIcon&quot;:{&quot;iconName&quot;:&quot;PeopleAdd&quot;}},{&quot;sourceItem&quot;:{&quot;url&quot;:&quot;https://workforcenow.adp.com&quot;,&quot;title&quot;:&quot;Time &amp; Attendance&quot;},&quot;thumbnailType&quot;:2,&quot;id&quot;:5,&quot;description&quot;:&quot;&quot;,&quot;fabricReactIcon&quot;:{&quot;iconName&quot;:&quot;Clock&quot;}}],&quot;isMigrated&quot;:true,&quot;layoutId&quot;:&quot;CompactCard&quot;,&quot;shouldShowThumbnail&quot;:true,&quot;hideWebPartWhenEmpty&quot;:false,&quot;dataProviderId&quot;:&quot;QuickLinks&quot;,&quot;webId&quot;:&quot;&quot;,&quot;siteId&quot;:&quot;&quot;}}" />
+                  ControlId="c70391ea-0b10-4ee9-b2b4-006d3fcad0cd"
+                  JsonControlData="{&quot;id&quot;:&quot;c70391ea-0b10-4ee9-b2b4-006d3fcad0cd&quot;,&quot;instanceId&quot;:&quot;c70391ea-0b10-4ee9-b2b4-006d3fcad0cd&quot;,&quot;title&quot;:&quot;Quick links&quot;,&quot;description&quot;:&quot;&quot;,&quot;dataVersion&quot;:&quot;2.2&quot;,&quot;properties&quot;:{&quot;items&quot;:[{&quot;sourceItem&quot;:{&quot;url&quot;:&quot;/SitePages/hr-benefits.aspx&quot;,&quot;title&quot;:&quot;Benefits Portal&quot;},&quot;thumbnailType&quot;:2,&quot;id&quot;:1,&quot;fabricReactIcon&quot;:{&quot;iconName&quot;:&quot;HeartFill&quot;}},{&quot;sourceItem&quot;:{&quot;url&quot;:&quot;/SitePages/it-helpdesk.aspx&quot;,&quot;title&quot;:&quot;IT Help Desk&quot;},&quot;thumbnailType&quot;:2,&quot;id&quot;:2,&quot;fabricReactIcon&quot;:{&quot;iconName&quot;:&quot;Headset&quot;}},{&quot;sourceItem&quot;:{&quot;url&quot;:&quot;/SitePages/hr-policies.aspx&quot;,&quot;title&quot;:&quot;Policy Library&quot;},&quot;thumbnailType&quot;:2,&quot;id&quot;:3,&quot;fabricReactIcon&quot;:{&quot;iconName&quot;:&quot;BookAnswers&quot;}},{&quot;sourceItem&quot;:{&quot;url&quot;:&quot;/SitePages/departments.aspx&quot;,&quot;title&quot;:&quot;Staff Directory&quot;},&quot;thumbnailType&quot;:2,&quot;id&quot;:4,&quot;fabricReactIcon&quot;:{&quot;iconName&quot;:&quot;PeopleAdd&quot;}},{&quot;sourceItem&quot;:{&quot;url&quot;:&quot;https://workforcenow.adp.com&quot;,&quot;title&quot;:&quot;Time &amp;amp; Attendance&quot;},&quot;thumbnailType&quot;:2,&quot;id&quot;:5,&quot;fabricReactIcon&quot;:{&quot;iconName&quot;:&quot;Clock&quot;}}],&quot;layoutId&quot;:&quot;CompactCard&quot;,&quot;shouldShowThumbnail&quot;:true,&quot;dataProviderId&quot;:&quot;QuickLinks&quot;}}" />
               </pnp:Controls>
             </pnp:Section>
           </pnp:Sections>
         </pnp:ClientSidePage>
 
-        <!-- ══ DEPARTMENTS PAGE ════════════════════════════════════════
-             Custom Departments Grid web part (only custom web part we keep).
-             Type=Default gives native SP page title banner.
-        ══════════════════════════════════════════════════════════════ -->
-        <pnp:ClientSidePage
-          PageName="departments.aspx"
-          Title="City Departments"
-          PromoteAsNewsArticle="false"
-          Overwrite="false"
-          Layout="Article"
-          EnableComments="false">
+        <!-- DEPARTMENTS — custom Departments Grid web part -->
+        <pnp:ClientSidePage PageName="departments.aspx" Title="City Departments"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="OneColumnFullWidth">
               <pnp:Controls>
                 <pnp:CanvasControl WebPartType="ThirdParty" Order="1" Column="1"
-                  ControlId="cc77c2f1-b0be-42d5-8104-b1f6d848012b"
-                  JsonControlData="{&quot;id&quot;:&quot;c3d4e5f6-a7b8-9012-cdef-123456789012&quot;,&quot;instanceId&quot;:&quot;depts-grid-01&quot;,&quot;title&quot;:&quot;COSF Departments Grid&quot;,&quot;description&quot;:&quot;Searchable card grid of all city departments&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{&quot;listName&quot;:&quot;Department Directory&quot;,&quot;showSearch&quot;:true,&quot;title&quot;:&quot;All City Departments&quot;}}" />
+                  ControlId="22222222-2222-2222-2222-222222222222"
+                  JsonControlData="{&quot;id&quot;:&quot;c3d4e5f6-a7b8-9012-cdef-123456789012&quot;,&quot;instanceId&quot;:&quot;22222222-2222-2222-2222-222222222222&quot;,&quot;title&quot;:&quot;COSF Departments Grid&quot;,&quot;description&quot;:&quot;Searchable department cards&quot;,&quot;dataVersion&quot;:&quot;1.0&quot;,&quot;properties&quot;:{}}" />
               </pnp:Controls>
             </pnp:Section>
           </pnp:Sections>
         </pnp:ClientSidePage>
 
-        <!-- ══ CITY MANAGER'S OFFICE ══════════════════════════════════ -->
-        <pnp:ClientSidePage PageName="city-managers-office.aspx" Title="City Manager's Office" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <!-- CITY MANAGER'S OFFICE -->
+        <pnp:ClientSidePage PageName="city-managers-office.aspx" Title="City Manager's Office"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="ThreeColumn">
               <pnp:Controls>
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="a7b074fc-af3a-41b3-8795-f4bec421c00f" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Overview&lt;/h3&gt;&lt;p&gt;The City Manager&apos;s Office oversees the day-to-day operations of the City of South Fulton, implementing policy directives of the Mayor and City Council.&lt;/p&gt;&quot;}" />
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="54cb51d2-e0bd-4bc4-89f3-9eb552f9159c" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Quick Links&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/city-managers-office-priorities.aspx&apos;&gt;Strategic Priorities&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/city-managers-office-memos.aspx&apos;&gt;Memos &amp;amp; Directives&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/city-managers-office-budget.aspx&apos;&gt;Budget Information&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="3" ControlId="85828544-542d-483b-a615-7104acaf34ac" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Contact&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;City Manager&apos;s Office&lt;/strong&gt;&lt;br/&gt;City of South Fulton&lt;br/&gt;5440 Fulton Industrial Blvd SW&lt;br/&gt;Atlanta, GA 30336&lt;br/&gt;(470) 809-7272&lt;/p&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="33333333-0001-0001-0001-000000000001"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;About the Office&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/city-managers-office-priorities.aspx'&gt;Strategic Priorities&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/city-managers-office-memos.aspx'&gt;Memos &amp;amp; Directives&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/city-managers-office-budget.aspx'&gt;Budget&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="33333333-0001-0001-0001-000000000002"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Contact&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;City Manager's Office&lt;/strong&gt;&lt;br/&gt;(470) 809-7200&lt;br/&gt;5440 Fulton Industrial Blvd SW&lt;br/&gt;South Fulton, GA 30336&lt;/p&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="3" ControlId="33333333-0001-0001-0001-000000000003"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Quick Actions&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/city-managers-office-memos.aspx'&gt;View Latest Memo&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/city-managers-office-budget.aspx'&gt;View Budget&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
               </pnp:Controls>
             </pnp:Section>
           </pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="city-managers-office-priorities.aspx" Title="Strategic Priorities" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
-          <pnp:Header Type="Default" />
-          <pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="bd07552e-d8ae-4584-8743-0562b5acae82" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Strategic Priorities&lt;/h2&gt;&lt;p&gt;Add the City Manager&apos;s strategic priority documents and goals here. Use the SharePoint document library or embed a document from the Policy Library.&lt;/p&gt;&quot;}" />
+        <pnp:ClientSidePage PageName="city-managers-office-priorities.aspx" Title="Strategic Priorities"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="33333333-0002-0002-0002-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Strategic Priorities&lt;/h2&gt;&lt;p&gt;The City Manager's strategic focus areas for fiscal year 2024-2025. Add your content here using SharePoint's Edit Page tools.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="city-managers-office-memos.aspx" Title="Memos &amp; Directives" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
-          <pnp:Header Type="Default" />
-          <pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="98e4f9ab-ef85-4c46-ab9d-2580ae500719" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Memos &amp;amp; Directives&lt;/h2&gt;&lt;p&gt;Official communications from the City Manager&apos;s Office. Add a Document Library web part to display memos from SharePoint.&lt;/p&gt;&quot;}" />
+        <pnp:ClientSidePage PageName="city-managers-office-memos.aspx" Title="Memos &amp; Directives"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="33333333-0003-0003-0003-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Memos &amp;amp; Directives&lt;/h2&gt;&lt;p&gt;City Manager memos and directives. Add a Document Library web part here to display uploaded memos.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="city-managers-office-budget.aspx" Title="Budget Information" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
-          <pnp:Header Type="Default" />
-          <pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="bc3bb12d-a829-4678-b09f-6a67e315f94f" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Budget Information&lt;/h2&gt;&lt;p&gt;City of South Fulton annual budget documents, presentations, and financial reports. Add a Document Library or Highlighted Content web part to display budget materials.&lt;/p&gt;&quot;}" />
+        <pnp:ClientSidePage PageName="city-managers-office-budget.aspx" Title="Budget"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+          <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="33333333-0004-0004-0004-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Budget&lt;/h2&gt;&lt;p&gt;City of South Fulton adopted budget documents and financial information.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <!-- ══ HUMAN RESOURCES ════════════════════════════════════════ -->
-        <pnp:ClientSidePage PageName="human-resources.aspx" Title="Human Resources" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <!-- HUMAN RESOURCES -->
+        <pnp:ClientSidePage PageName="human-resources.aspx" Title="Human Resources"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="ThreeColumn">
               <pnp:Controls>
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="b7049bb7-2d61-4509-8a4b-b9d139ceea3b" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Benefits&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/hr-benefits.aspx&apos;&gt;Health &amp;amp; Dental Insurance&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/hr-benefits.aspx&apos;&gt;Retirement / Pension&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/hr-benefits.aspx&apos;&gt;Employee Assistance Program&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="2fe2e6d7-a6a2-400c-9055-123ef11eb136" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Policies&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/hr-policies.aspx&apos;&gt;Employee Handbook&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/hr-policies.aspx&apos;&gt;Code of Conduct&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/hr-policies.aspx&apos;&gt;Leave &amp;amp; Attendance&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="3" ControlId="fcdf5642-3e2e-4c99-ace6-dd3a71a3ddc6" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Development&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/hr-training.aspx&apos;&gt;Training Calendar&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/hr-training.aspx&apos;&gt;Tuition Assistance&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/hr-onboarding.aspx&apos;&gt;New Employee Onboarding&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="44444444-0001-0001-0001-000000000001"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Benefits&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/hr-benefits.aspx'&gt;Health Insurance&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/hr-benefits.aspx'&gt;Retirement (GMEBS)&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/hr-benefits.aspx'&gt;Leave Policies&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="44444444-0001-0001-0001-000000000002"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Policies&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/hr-policies.aspx'&gt;Employee Handbook&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/hr-policies.aspx'&gt;Code of Conduct&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/hr-policies.aspx'&gt;Ethics Policy&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="3" ControlId="44444444-0001-0001-0001-000000000003"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Contact HR&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Human Resources&lt;/strong&gt;&lt;br/&gt;(470) 809-7010&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/hr-training.aspx'&gt;Training&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/hr-onboarding.aspx'&gt;Onboarding&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
               </pnp:Controls>
             </pnp:Section>
           </pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="hr-benefits.aspx" Title="Benefits &amp; Enrollment" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="hr-benefits.aspx" Title="Benefits"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="c44c8a73-aaee-455d-942b-d64d5e2b8791" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Benefits &amp;amp; Enrollment&lt;/h2&gt;&lt;p&gt;Information about employee health insurance, dental, vision, retirement plans, and enrollment periods. Contact HR at (470) 809-7740 for assistance.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="44444444-0002-0002-0002-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Employee Benefits&lt;/h2&gt;&lt;p&gt;Health, dental, vision, life insurance, retirement (GMEBS), FSA, and Employee Assistance Program. Contact HR at (470) 809-7010 for enrollment assistance.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="hr-policies.aspx" Title="Policies &amp; Handbook" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="hr-policies.aspx" Title="HR Policies"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="0208a021-0d85-4ff4-b8ee-6d267378e49f" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Policies &amp;amp; Employee Handbook&lt;/h2&gt;&lt;p&gt;City of South Fulton employee policies, handbook, code of conduct, and workplace guidelines. Add a Document Library web part to display policy documents.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="44444444-0003-0003-0003-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;HR Policies&lt;/h2&gt;&lt;p&gt;City of South Fulton personnel policies, Employee Handbook, Code of Conduct, and Ethics Policy. Add a Document Library web part to display policy documents.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="hr-training.aspx" Title="Training &amp; Development" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="hr-training.aspx" Title="Training &amp; Development"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="7dcb03d4-1ecd-4f2c-a79e-920c34c54a8b" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Training &amp;amp; Development&lt;/h2&gt;&lt;p&gt;Professional development opportunities, training calendar, tuition assistance, and leadership programs for City of South Fulton employees.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="44444444-0004-0004-0004-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Training &amp;amp; Development&lt;/h2&gt;&lt;p&gt;Professional development opportunities, mandatory training schedules, and LinkedIn Learning access for COSF employees.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="hr-onboarding.aspx" Title="New Employee Onboarding" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="hr-onboarding.aspx" Title="Employee Onboarding"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="336d1d2a-266d-4018-acd6-43c436b528f1" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Welcome to the City of South Fulton!&lt;/h2&gt;&lt;p&gt;Everything new employees need to get started — ID badges, system access, benefits enrollment, and your first week checklist.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="44444444-0005-0005-0005-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;New Employee Onboarding&lt;/h2&gt;&lt;p&gt;Welcome checklist, IT setup instructions, badge and parking information, and first-week resources for new City of South Fulton employees.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <!-- ══ INFORMATION TECHNOLOGY ═════════════════════════════════ -->
-        <pnp:ClientSidePage PageName="information-technology.aspx" Title="Information Technology" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <!-- INFORMATION TECHNOLOGY -->
+        <pnp:ClientSidePage PageName="information-technology.aspx" Title="Information Technology"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="ThreeColumn">
               <pnp:Controls>
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="dd99d01e-0308-4143-b9e1-16c5f1c4ec8a" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Support&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/it-helpdesk.aspx&apos;&gt;Submit a Help Desk Ticket&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/it-status.aspx&apos;&gt;System Status&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/it-resources.aspx&apos;&gt;How-To Guides&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Phone: (470) 809-7060&lt;/p&gt;&quot;}" />
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="b455005b-9fb3-4b11-9e70-7927b46b6389" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Security&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/it-security.aspx&apos;&gt;Security Policies&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/it-security.aspx&apos;&gt;Password Reset&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/it-security.aspx&apos;&gt;Report a Phishing Email&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="3" ControlId="2324ba02-6b66-4580-b75b-92d3ae4fae6a" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Resources&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/it-resources.aspx&apos;&gt;Software Catalog&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/it-resources.aspx&apos;&gt;Remote Access / VPN&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/it-resources.aspx&apos;&gt;Microsoft 365 Training&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="55555555-0001-0001-0001-000000000001"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Get Help&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/it-helpdesk.aspx'&gt;Submit a Ticket&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/it-status.aspx'&gt;System Status&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Phone: (470) 809-7060&lt;/p&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="55555555-0001-0001-0001-000000000002"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Security&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/it-security.aspx'&gt;Password Policy&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/it-security.aspx'&gt;MFA Setup&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/it-security.aspx'&gt;Phishing Awareness&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="3" ControlId="55555555-0001-0001-0001-000000000003"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Resources&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/it-resources.aspx'&gt;Software Catalog&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/it-resources.aspx'&gt;Remote Access / VPN&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/it-resources.aspx'&gt;M365 Training&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
               </pnp:Controls>
             </pnp:Section>
           </pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="it-helpdesk.aspx" Title="IT Help Desk" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="it-helpdesk.aspx" Title="IT Help Desk"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="94f32c4b-60cf-4979-9b39-42dd8415415e" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;IT Help Desk&lt;/h2&gt;&lt;p&gt;For immediate assistance call &lt;strong&gt;(470) 809-7060&lt;/strong&gt; or submit a ticket. Hours: Monday–Friday, 8 AM–5 PM.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="55555555-0002-0002-0002-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;IT Help Desk&lt;/h2&gt;&lt;p&gt;For immediate assistance call &lt;strong&gt;(470) 809-7060&lt;/strong&gt; or submit a ticket. Hours: Monday–Friday, 8 AM–5 PM.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="it-status.aspx" Title="System Status" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="it-status.aspx" Title="System Status"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="775cbd6b-7870-4d4d-bf16-c7a496d617b3" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;System Status&lt;/h2&gt;&lt;p&gt;Real-time status of city systems and services. All systems operational unless noted here.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="55555555-0003-0003-0003-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;System Status&lt;/h2&gt;&lt;p&gt;Real-time status of city systems and services. All systems operational unless noted here.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="it-resources.aspx" Title="IT Resources &amp; Guides" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="it-resources.aspx" Title="IT Resources &amp; Guides"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="6b533665-3681-4bfb-a4a0-3666fea9510b" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;IT Resources &amp;amp; Guides&lt;/h2&gt;&lt;p&gt;Software catalog, remote access guides, Microsoft 365 tutorials, and equipment request forms. Add a Document Library web part to display IT guides.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="55555555-0004-0004-0004-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;IT Resources &amp;amp; Guides&lt;/h2&gt;&lt;p&gt;Software catalog, remote access guides, Microsoft 365 tutorials, and equipment request forms.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="it-security.aspx" Title="IT Security" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="it-security.aspx" Title="IT Security"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="61ee47b1-7463-4161-84bd-65c9a37d79ea" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;IT Security&lt;/h2&gt;&lt;p&gt;Protecting city systems, data, and employees from cyber threats. Learn about password policies, phishing awareness, multi-factor authentication, and data classification.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="55555555-0005-0005-0005-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;IT Security&lt;/h2&gt;&lt;p&gt;Password policies, phishing awareness, multi-factor authentication, and data classification guidelines for City of South Fulton employees.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <!-- ══ COMMUNICATIONS ══════════════════════════════════════════ -->
-        <pnp:ClientSidePage PageName="communications.aspx" Title="Communications" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <!-- COMMUNICATIONS -->
+        <pnp:ClientSidePage PageName="communications.aspx" Title="Communications"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="TwoColumn">
               <pnp:Controls>
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="99b2bdf8-fcfb-41b5-9181-51f5c9790769" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Resources&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/comm-brand.aspx&apos;&gt;Brand Guidelines &amp;amp; Assets&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/comm-press.aspx&apos;&gt;Press Release Templates&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/comm-social.aspx&apos;&gt;Social Media Policy&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/comm-internal.aspx&apos;&gt;Internal Communications&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="4e6fb0cd-a0c3-4f67-ba89-1598e0e259b4" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Submit a Request&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/comm-requests.aspx&apos;&gt;Communications Request Form&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/comm-press.aspx&apos;&gt;Media Inquiries&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/comm-brand.aspx&apos;&gt;Request Design Help&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Phone: (470) 552-4311&lt;/p&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0001-0001-0001-000000000001"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Resources&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/comm-brand.aspx'&gt;Brand Guidelines &amp;amp; Assets&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/comm-press.aspx'&gt;Press Release Templates&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/comm-social.aspx'&gt;Social Media Policy&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/comm-internal.aspx'&gt;Internal Communications&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="66666666-0001-0001-0001-000000000002"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Submit a Request&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/comm-requests.aspx'&gt;Communications Request Form&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/comm-press.aspx'&gt;Media Inquiries&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Phone: (470) 552-4311&lt;/p&gt;&quot;}" />
               </pnp:Controls>
             </pnp:Section>
           </pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="comm-press.aspx" Title="Press &amp; Media" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="comm-press.aspx" Title="Press &amp; Media"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="829979a6-f8e9-4444-b56c-1ff20a5538d8" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Press &amp;amp; Media&lt;/h2&gt;&lt;p&gt;Press release templates, media contact information, and guidance for handling media inquiries.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0002-0002-0002-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Press &amp;amp; Media&lt;/h2&gt;&lt;p&gt;Press release templates, media contact information, and guidance for handling media inquiries.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="comm-social.aspx" Title="Social Media" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="comm-social.aspx" Title="Social Media"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="75ad9b5f-9259-4d57-a547-c630a8d2956f" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Social Media Policy&lt;/h2&gt;&lt;p&gt;Guidelines for City of South Fulton employees using social media. Add official social media policy document here.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0003-0003-0003-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Social Media&lt;/h2&gt;&lt;p&gt;Social media policy, approved platforms, posting guidelines, and escalation procedures for the City of South Fulton.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="comm-brand.aspx" Title="Brand Assets" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="comm-brand.aspx" Title="Brand Assets"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="1f7ec559-2369-41eb-8f83-e14d80154d9a" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Brand Assets&lt;/h2&gt;&lt;p&gt;Official City of South Fulton logos, color palette, fonts, and communication templates. All materials follow the 2024 Brand Guidelines. Add a Document Library web part to display brand assets.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0004-0004-0004-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Brand Assets&lt;/h2&gt;&lt;p&gt;Official COSF logos, color palette (Navy #0A72B8, Lime #74B745), fonts, and templates. See the brand guide at cityofsouthfultonga.gov.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="comm-internal.aspx" Title="Internal Communications" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="comm-internal.aspx" Title="Internal Communications"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="648c4d06-ac6a-435d-8481-4046ec03eeea" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Internal Communications&lt;/h2&gt;&lt;p&gt;Internal memos, city-wide announcements, and staff newsletter. Add a News or Highlighted Content web part to surface the latest communications.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0005-0005-0005-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Internal Communications&lt;/h2&gt;&lt;p&gt;Internal newsletters, all-staff announcements, and citywide communication templates.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="comm-requests.aspx" Title="Submit a Communications Request" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="comm-requests.aspx" Title="Communications Requests"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="3355cc30-2d64-48a5-a4ca-805adf20231e" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Submit a Communications Request&lt;/h2&gt;&lt;p&gt;Need help with a press release, flyer, social post, or video? Submit a request and the Communications team will reach out within 2 business days.&lt;/p&gt;&lt;p&gt;Email: &lt;a href=&apos;mailto:communications@cityofsouthfultonga.gov&apos;&gt;communications@cityofsouthfultonga.gov&lt;/a&gt;&lt;br/&gt;Phone: (470) 552-4311&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0006-0006-0006-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Communications Requests&lt;/h2&gt;&lt;p&gt;Submit a request for communications support: press releases, event promotion, design help, or media inquiries. Call (470) 552-4311.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <!-- ══ GENERAL SERVICES ═══════════════════════════════════════ -->
-        <pnp:ClientSidePage PageName="general-services.aspx" Title="General Services" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <!-- GENERAL SERVICES -->
+        <pnp:ClientSidePage PageName="general-services.aspx" Title="General Services"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="TwoColumn">
               <pnp:Controls>
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="366d77f2-de1f-4b3f-b750-b3619df371c3" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Facilities&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/gs-facilities.aspx&apos;&gt;Submit a Work Order&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/gs-facilities.aspx&apos;&gt;Reserve a Conference Room&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/gs-facilities.aspx&apos;&gt;Building Access / Keys&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Fleet&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/gs-fleet.aspx&apos;&gt;Vehicle Requests&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/gs-fleet.aspx&apos;&gt;Mileage &amp;amp; Fuel Logs&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
-                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="2e21359c-447b-44fc-a76f-a00590934d7c" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Procurement&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/gs-purchasing.aspx&apos;&gt;Purchase Requests&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/gs-purchasing.aspx&apos;&gt;Vendor List&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/gs-purchasing.aspx&apos;&gt;P-Card Policy&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Records&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/gs-records.aspx&apos;&gt;Records Retention Schedule&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&apos;/SitePages/gs-records.aspx&apos;&gt;Public Records Requests&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="77777777-0001-0001-0001-000000000001"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Facilities &amp;amp; Fleet&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/gs-facilities.aspx'&gt;Facilities &amp;amp; Work Orders&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/gs-fleet.aspx'&gt;Fleet Management&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
+                <pnp:CanvasControl WebPartType="Text" Order="1" Column="2" ControlId="77777777-0001-0001-0001-000000000002"
+                  JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h3&gt;Procurement &amp;amp; Records&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='/SitePages/gs-purchasing.aspx'&gt;Purchase Requests&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/gs-purchasing.aspx'&gt;Vendor List&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/gs-records.aspx'&gt;Records Retention&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='/SitePages/gs-records.aspx'&gt;Public Records Requests&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&quot;}" />
               </pnp:Controls>
             </pnp:Section>
           </pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="gs-facilities.aspx" Title="Facilities Management" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="gs-facilities.aspx" Title="Facilities Management"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="f62bc041-c910-4bff-a22d-0b5ac4146eec" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Facilities Management&lt;/h2&gt;&lt;p&gt;Submit work orders, request building access, reserve conference rooms, and manage facilities requests. Contact General Services at (470) 809-7755.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="77777777-0002-0002-0002-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Facilities Management&lt;/h2&gt;&lt;p&gt;Submit work orders, request building access, reserve conference rooms. Contact General Services at (470) 809-7755.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="gs-fleet.aspx" Title="Fleet Management" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="gs-fleet.aspx" Title="Fleet Management"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="e559cc7d-fb6e-4e42-8188-3cf574374b2e" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Fleet Management&lt;/h2&gt;&lt;p&gt;City vehicle requests, mileage logs, fuel card policy, and preventive maintenance schedules.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="77777777-0003-0003-0003-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Fleet Management&lt;/h2&gt;&lt;p&gt;City vehicle requests, mileage logs, fuel card policy, and preventive maintenance schedules.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="gs-purchasing.aspx" Title="Purchasing &amp; Vendors" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="gs-purchasing.aspx" Title="Purchasing &amp; Vendors"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="75a0947b-6238-4f82-9f85-e25b485408db" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Purchasing &amp;amp; Vendors&lt;/h2&gt;&lt;p&gt;Purchase requisitions, approved vendor list, P-Card policy, and competitive bidding requirements.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="77777777-0004-0004-0004-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Purchasing &amp;amp; Vendors&lt;/h2&gt;&lt;p&gt;Purchase requisitions, approved vendor list, P-Card policy, and competitive bidding requirements.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
-        <pnp:ClientSidePage PageName="gs-records.aspx" Title="Records Management" PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
+        <pnp:ClientSidePage PageName="gs-records.aspx" Title="Records Management"
+          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
-            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="cffe10f9-78f4-4534-ac0a-9494932d0680" JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Records Management&lt;/h2&gt;&lt;p&gt;Georgia records retention schedules, public records request procedures, and document management guidelines for City of South Fulton departments.&lt;/p&gt;&quot;}" />
+            <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="77777777-0005-0005-0005-000000000001"
+              JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Records Management&lt;/h2&gt;&lt;p&gt;Georgia records retention schedules, public records request procedures, and document management guidelines.&lt;/p&gt;&quot;}" />
           </pnp:Controls></pnp:Section></pnp:Sections>
         </pnp:ClientSidePage>
 
       </pnp:ClientSidePages>
 
-
-      <!-- ── SITE HEADER & THEME ──────────────────────────────────────
-           BackgroundEmphasis="Strong" makes the SharePoint nav bar
-           use COSF blue (#0A72B8) with white text — matching the brand.
-           BrandingSettings applies the COSF Intranet Theme color palette.
-      ──────────────────────────────────────────────────────────────── -->
-      <pnp:Header
-        Layout="Standard"
-        MenuStyle="MegaMenu"
-        BackgroundEmphasis="Strong"
-      />
-
-        </pnp:ProvisioningTemplate>
+    </pnp:ProvisioningTemplate>
   </pnp:Templates>
 
 </pnp:Provisioning>
