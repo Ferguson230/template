@@ -1,4 +1,3 @@
-import { override } from '@microsoft/decorators';
 import {
   BaseApplicationCustomizer,
   PlaceholderContent,
@@ -24,7 +23,6 @@ export default class CosfHeaderApplicationCustomizer
 
   private _bottomPlaceholder: PlaceholderContent | undefined;
 
-  @override
   public onInit(): Promise<void> {
     this.context.placeholderProvider.changedEvent.add(this, this._renderFooter);
     this._renderFooter();
