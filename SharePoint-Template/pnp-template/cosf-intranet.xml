@@ -138,9 +138,9 @@
             <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
           </pnp:ContentTypeBindings>
           <pnp:Fields>
-            <pnp:Field Type="URL"    ID="{6hi32109-5f1h-4g8d-eh5j-3k8f59398f8h}" Name="LinkUrl"       DisplayName="Link URL"   Hidden="false" Required="true" />
-            <pnp:Field Type="Text"   ID="{7ij43210-6g2i-4h9e-fi6k-4l9g60409g9i}" Name="LinkIcon"      DisplayName="Icon Name"  Hidden="false" Required="false" />
-            <pnp:Field Type="Number" ID="{8jk54321-7h3j-4i0f-gj7l-5m0h71510h0j}" Name="SortOrder"     DisplayName="Sort Order" Hidden="false" Required="false" />
+            <pnp:Field Type="URL"    ID="{6a032109-5f10-4a8d-ea50-3a8f59398f80}" Name="LinkUrl"       DisplayName="Link URL"   Hidden="false" Required="true" />
+            <pnp:Field Type="Text"   ID="{7b043210-6a20-4b90-fb60-4b9a60409a90}" Name="LinkIcon"      DisplayName="Icon Name"  Hidden="false" Required="false" />
+            <pnp:Field Type="Number" ID="{8c054321-7b30-4c00-ac70-5c0b71510b00}" Name="SortOrder"     DisplayName="Sort Order" Hidden="false" Required="false" />
           </pnp:Fields>
           <pnp:DataRows>
             <pnp:DataRow><pnp:DataValue FieldName="Title">Benefits Portal</pnp:DataValue><pnp:DataValue FieldName="LinkUrl">/SitePages/hr-benefits.aspx, Benefits Portal</pnp:DataValue><pnp:DataValue FieldName="SortOrder">1</pnp:DataValue></pnp:DataRow>
@@ -159,9 +159,9 @@
             <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
           </pnp:ContentTypeBindings>
           <pnp:Fields>
-            <pnp:Field Type="URL"    ID="{9kl65432-8i4k-4j1g-hk8m-6n1i82621i1k}" Name="FooterLinkUrl"  DisplayName="Link URL"    Hidden="false" Required="true" />
-            <pnp:Field Type="Text"   ID="{0lm76543-9j5l-4k2h-il9n-7o2j93732j2l}" Name="FooterColumn"   DisplayName="Column"      Hidden="false" Required="true" />
-            <pnp:Field Type="Number" ID="{1mn87654-0k6m-4l3i-jm0o-8p3k04843k3m}" Name="SortOrder"      DisplayName="Sort Order"  Hidden="false" Required="false" />
+            <pnp:Field Type="URL"    ID="{9d065432-8c40-4d10-bd80-6d1c82621c10}" Name="FooterLinkUrl"  DisplayName="Link URL"    Hidden="false" Required="true" />
+            <pnp:Field Type="Text"   ID="{0e076543-9d50-4e20-ce90-7e2d93732d20}" Name="FooterColumn"   DisplayName="Column"      Hidden="false" Required="true" />
+            <pnp:Field Type="Number" ID="{1f087654-0e60-4f30-df00-8f3e04843e30}" Name="SortOrder"      DisplayName="Sort Order"  Hidden="false" Required="false" />
           </pnp:Fields>
           <pnp:DataRows>
             <pnp:DataRow><pnp:DataValue FieldName="Title">About COSF</pnp:DataValue><pnp:DataValue FieldName="FooterLinkUrl">/SitePages/city-managers-office.aspx, About COSF</pnp:DataValue><pnp:DataValue FieldName="FooterColumn">City</pnp:DataValue><pnp:DataValue FieldName="SortOrder">1</pnp:DataValue></pnp:DataRow>
