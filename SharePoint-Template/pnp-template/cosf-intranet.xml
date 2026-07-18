@@ -204,7 +204,7 @@
 
         <!-- HOME — native Hero + News + Quick Links -->
         <pnp:ClientSidePage PageName="home.aspx" Title="City of South Fulton Intranet"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Home" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Home" EnableComments="false" Publish="true">
           <pnp:Header Type="None" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="OneColumnFullWidth">
@@ -229,7 +229,7 @@
 
         <!-- DEPARTMENTS — custom Departments Grid web part -->
         <pnp:ClientSidePage PageName="departments.aspx" Title="City Departments"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="OneColumn">
@@ -244,7 +244,7 @@
 
         <!-- CITY MANAGER'S OFFICE -->
         <pnp:ClientSidePage PageName="city-managers-office.aspx" Title="City Manager's Office"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="ThreeColumn">
@@ -261,7 +261,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="city-managers-office-priorities.aspx" Title="Strategic Priorities"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="33333333-0002-0002-0002-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Strategic Priorities&lt;/h2&gt;&lt;p&gt;The City Manager's strategic focus areas for fiscal year 2024-2025. Add your content here using SharePoint's Edit Page tools.&lt;/p&gt;&quot;}" />
@@ -269,7 +269,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="city-managers-office-memos.aspx" Title="Memos &amp; Directives"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="33333333-0003-0003-0003-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Memos &amp;amp; Directives&lt;/h2&gt;&lt;p&gt;City Manager memos and directives. Add a Document Library web part here to display uploaded memos.&lt;/p&gt;&quot;}" />
@@ -277,7 +277,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="city-managers-office-budget.aspx" Title="Budget"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="33333333-0004-0004-0004-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Budget&lt;/h2&gt;&lt;p&gt;City of South Fulton adopted budget documents and financial information.&lt;/p&gt;&quot;}" />
@@ -286,7 +286,7 @@
 
         <!-- HUMAN RESOURCES -->
         <pnp:ClientSidePage PageName="human-resources.aspx" Title="Human Resources"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="ThreeColumn">
@@ -303,7 +303,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="hr-benefits.aspx" Title="Benefits"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="44444444-0002-0002-0002-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Employee Benefits&lt;/h2&gt;&lt;p&gt;Health, dental, vision, life insurance, retirement (GMEBS), FSA, and Employee Assistance Program. Contact HR at (470) 809-7010 for enrollment assistance.&lt;/p&gt;&quot;}" />
@@ -311,7 +311,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="hr-policies.aspx" Title="HR Policies"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="44444444-0003-0003-0003-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;HR Policies&lt;/h2&gt;&lt;p&gt;City of South Fulton personnel policies, Employee Handbook, Code of Conduct, and Ethics Policy. Add a Document Library web part to display policy documents.&lt;/p&gt;&quot;}" />
@@ -319,7 +319,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="hr-training.aspx" Title="Training &amp; Development"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="44444444-0004-0004-0004-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Training &amp;amp; Development&lt;/h2&gt;&lt;p&gt;Professional development opportunities, mandatory training schedules, and LinkedIn Learning access for COSF employees.&lt;/p&gt;&quot;}" />
@@ -327,7 +327,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="hr-onboarding.aspx" Title="Employee Onboarding"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="44444444-0005-0005-0005-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;New Employee Onboarding&lt;/h2&gt;&lt;p&gt;Welcome checklist, IT setup instructions, badge and parking information, and first-week resources for new City of South Fulton employees.&lt;/p&gt;&quot;}" />
@@ -336,7 +336,7 @@
 
         <!-- INFORMATION TECHNOLOGY -->
         <pnp:ClientSidePage PageName="information-technology.aspx" Title="Information Technology"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="ThreeColumn">
@@ -353,7 +353,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="it-helpdesk.aspx" Title="IT Help Desk"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="55555555-0002-0002-0002-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;IT Help Desk&lt;/h2&gt;&lt;p&gt;For immediate assistance call &lt;strong&gt;(470) 809-7060&lt;/strong&gt; or submit a ticket. Hours: Monday–Friday, 8 AM–5 PM.&lt;/p&gt;&quot;}" />
@@ -361,7 +361,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="it-status.aspx" Title="System Status"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="55555555-0003-0003-0003-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;System Status&lt;/h2&gt;&lt;p&gt;Real-time status of city systems and services. All systems operational unless noted here.&lt;/p&gt;&quot;}" />
@@ -369,7 +369,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="it-resources.aspx" Title="IT Resources &amp; Guides"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="55555555-0004-0004-0004-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;IT Resources &amp;amp; Guides&lt;/h2&gt;&lt;p&gt;Software catalog, remote access guides, Microsoft 365 tutorials, and equipment request forms.&lt;/p&gt;&quot;}" />
@@ -377,7 +377,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="it-security.aspx" Title="IT Security"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="55555555-0005-0005-0005-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;IT Security&lt;/h2&gt;&lt;p&gt;Password policies, phishing awareness, multi-factor authentication, and data classification guidelines for City of South Fulton employees.&lt;/p&gt;&quot;}" />
@@ -386,7 +386,7 @@
 
         <!-- COMMUNICATIONS -->
         <pnp:ClientSidePage PageName="communications.aspx" Title="Communications"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="TwoColumn">
@@ -401,7 +401,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="comm-press.aspx" Title="Press &amp; Media"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0002-0002-0002-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Press &amp;amp; Media&lt;/h2&gt;&lt;p&gt;Press release templates, media contact information, and guidance for handling media inquiries.&lt;/p&gt;&quot;}" />
@@ -409,7 +409,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="comm-social.aspx" Title="Social Media"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0003-0003-0003-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Social Media&lt;/h2&gt;&lt;p&gt;Social media policy, approved platforms, posting guidelines, and escalation procedures for the City of South Fulton.&lt;/p&gt;&quot;}" />
@@ -417,7 +417,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="comm-brand.aspx" Title="Brand Assets"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0004-0004-0004-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Brand Assets&lt;/h2&gt;&lt;p&gt;Official COSF logos, color palette (Navy #0A72B8, Lime #74B745), fonts, and templates. See the brand guide at cityofsouthfultonga.gov.&lt;/p&gt;&quot;}" />
@@ -425,7 +425,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="comm-internal.aspx" Title="Internal Communications"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0005-0005-0005-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Internal Communications&lt;/h2&gt;&lt;p&gt;Internal newsletters, all-staff announcements, and citywide communication templates.&lt;/p&gt;&quot;}" />
@@ -433,7 +433,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="comm-requests.aspx" Title="Communications Requests"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="66666666-0006-0006-0006-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Communications Requests&lt;/h2&gt;&lt;p&gt;Submit a request for communications support: press releases, event promotion, design help, or media inquiries. Call (470) 552-4311.&lt;/p&gt;&quot;}" />
@@ -442,7 +442,7 @@
 
         <!-- GENERAL SERVICES -->
         <pnp:ClientSidePage PageName="general-services.aspx" Title="General Services"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" />
           <pnp:Sections>
             <pnp:Section Order="1" Type="TwoColumn">
@@ -457,7 +457,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="gs-facilities.aspx" Title="Facilities Management"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="77777777-0002-0002-0002-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Facilities Management&lt;/h2&gt;&lt;p&gt;Submit work orders, request building access, reserve conference rooms. Contact General Services at (470) 809-7755.&lt;/p&gt;&quot;}" />
@@ -465,7 +465,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="gs-fleet.aspx" Title="Fleet Management"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="77777777-0003-0003-0003-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Fleet Management&lt;/h2&gt;&lt;p&gt;City vehicle requests, mileage logs, fuel card policy, and preventive maintenance schedules.&lt;/p&gt;&quot;}" />
@@ -473,7 +473,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="gs-purchasing.aspx" Title="Purchasing &amp; Vendors"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="77777777-0004-0004-0004-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Purchasing &amp;amp; Vendors&lt;/h2&gt;&lt;p&gt;Purchase requisitions, approved vendor list, P-Card policy, and competitive bidding requirements.&lt;/p&gt;&quot;}" />
@@ -481,7 +481,7 @@
         </pnp:ClientSidePage>
 
         <pnp:ClientSidePage PageName="gs-records.aspx" Title="Records Management"
-          PromoteAsNewsArticle="false" Overwrite="false" Layout="Article" EnableComments="false" Publish="true">
+          PromoteAsNewsArticle="false" Overwrite="true" Layout="Article" EnableComments="false" Publish="true">
           <pnp:Header Type="Default" /><pnp:Sections><pnp:Section Order="1" Type="OneColumn"><pnp:Controls>
             <pnp:CanvasControl WebPartType="Text" Order="1" Column="1" ControlId="77777777-0005-0005-0005-000000000001"
               JsonControlData="{&quot;innerHTML&quot;:&quot;&lt;h2&gt;Records Management&lt;/h2&gt;&lt;p&gt;Georgia records retention schedules, public records request procedures, and document management guidelines.&lt;/p&gt;&quot;}" />
