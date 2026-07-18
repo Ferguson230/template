@@ -103,10 +103,10 @@
           </pnp:ContentTypeBindings>
           <pnp:Fields>
             <pnp:Field Type="Text"   ID="{1cd76456-0a8c-4b38-9c0e-8f3a04843a3c}" Name="DeptPhone"       DisplayName="Phone"      Hidden="false" Required="false" />
-            <pnp:Field Type="Text"   ID="{2de98765-1b7d-4c49-ad1f-9g4b15954b4d}" Name="DeptLocation"    DisplayName="Location"   Hidden="false" Required="false" />
-            <pnp:Field Type="Text"   ID="{3ef09876-2c8e-4d5a-be2g-0h5c26065c5e}" Name="DeptDirector"    DisplayName="Director"   Hidden="false" Required="false" />
-            <pnp:Field Type="Text"   ID="{4fg10987-3d9f-4e6b-cf3h-1i6d37176d6f}" Name="DeptCategory"    DisplayName="Category"   Hidden="false" Required="false" />
-            <pnp:Field Type="URL"    ID="{5gh21098-4e0g-4f7c-dg4i-2j7e48287e7g}" Name="DeptPageUrl"     DisplayName="Page URL"   Hidden="false" Required="false" />
+            <pnp:Field Type="Text"   ID="{2de98765-1b7d-4c49-ad1f-904b15954b4d}" Name="DeptLocation"    DisplayName="Location"   Hidden="false" Required="false" />
+            <pnp:Field Type="Text"   ID="{3ef09876-2c8e-4d5a-be20-005c26065c5e}" Name="DeptDirector"    DisplayName="Director"   Hidden="false" Required="false" />
+            <pnp:Field Type="Text"   ID="{4f010987-3d9f-4e6b-cf30-106d37176d6f}" Name="DeptCategory"    DisplayName="Category"   Hidden="false" Required="false" />
+            <pnp:Field Type="URL"    ID="{5a021098-4e06-4f7c-da40-207e48287e70}" Name="DeptPageUrl"     DisplayName="Page URL"   Hidden="false" Required="false" />
           </pnp:Fields>
           <pnp:DataRows>
             <pnp:DataRow><pnp:DataValue FieldName="Title">Police Department</pnp:DataValue><pnp:DataValue FieldName="DeptPhone">(470) 809-7777</pnp:DataValue><pnp:DataValue FieldName="DeptCategory">Public Safety</pnp:DataValue></pnp:DataRow>
