@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/config/2018-05/config.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "cosf-header-extension": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/cosfHeader/CosfHeaderApplicationCustomizer.js",
+          "manifest": "./src/extensions/cosfHeader/CosfHeaderApplicationCustomizer.manifest.json"
+        }
+      ]
+    },
+    "cosf-hero-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cosfHero/CosfHeroWebPart.js",
+          "manifest": "./src/webparts/cosfHero/CosfHeroWebPart.manifest.json"
+        }
+      ]
+    },
+    "cosf-departments-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cosfDepartments/CosfDepartmentsWebPart.js",
+          "manifest": "./src/webparts/cosfDepartments/CosfDepartmentsWebPart.manifest.json"
+        }
+      ]
+    },
+    "cosf-announcements-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cosfAnnouncements/CosfAnnouncementsWebPart.js",
+          "manifest": "./src/webparts/cosfAnnouncements/CosfAnnouncementsWebPart.manifest.json"
+        }
+      ]
+    },
+    "cosf-quick-links-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cosfQuickLinks/CosfQuickLinksWebPart.js",
+          "manifest": "./src/webparts/cosfQuickLinks/CosfQuickLinksWebPart.manifest.json"
+        }
+      ]
+    },
+    "cosf-intranet-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cosfIntranet/CosfIntranetWebPart.js",
+          "manifest": "./src/webparts/cosfIntranet/CosfIntranetWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {}
+}

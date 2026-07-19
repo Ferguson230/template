@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/module-interfaces/2018-08/schema.json",
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567891",
+  "alias": "CosfHeaderApplicationCustomizer",
+  "componentType": "Extension",
+  "extensionType": "ApplicationCustomizer",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "COSF Intranet Header" },
+    "description": { "default": "Applies City of South Fulton branded header and navigation to every page." },
+    "properties": {
+      "siteTitle": "City of South Fulton",
+      "tagLine": "Employee Intranet Portal · A City on the Rise!",
+      "logoUrl": ""
+    }
+  }]
+}

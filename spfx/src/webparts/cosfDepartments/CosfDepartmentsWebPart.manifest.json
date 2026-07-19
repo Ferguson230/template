@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/module-interfaces/2018-08/schema.json",
+  "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+  "alias": "CosfDepartmentsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportsFullBleed": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "City of South Fulton" },
+    "title": { "default": "COSF Departments Grid" },
+    "description": { "default": "Searchable 3-column card grid of all city departments. Reads from a 'Department Directory' SharePoint list, or shows built-in demo data." },
+    "officeFabricIconFontName": "Org",
+    "properties": {
+      "listName": "Department Directory",
+      "showSearch": true,
+      "title": "City Departments"
+    }
+  }]
+}

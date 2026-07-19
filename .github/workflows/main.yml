@@ -1,0 +1,32 @@
+name: Build COSF Intranet .sppkg
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.20.4'
+
+      - name: Find spfx folder and build
+        run: |
+          echo "=== Repo structure ==="
+          find . -name "gulpfile.js" -type f
+          SPFX=$(find . -name "gulpfile.js" -type f -exec dirname {} \; | head -1)
+          echo "=== Building in: $SPFX ==="
+          cd "$SPFX"
+          npm install --legacy-peer-deps
+          npx gulp bundle --ship
+          npx gulp package-solution --ship
+
+      - name: Upload .sppkg
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosf-intranet-sppkg
+          path: '**/cosf-intranet.sppkg'
+          retention-days: 30
